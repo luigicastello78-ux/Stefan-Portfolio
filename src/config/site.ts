@@ -14,9 +14,12 @@ export const siteConfig = {
   // TODO: replace with the owner's real booking URL. PRD section 10.1.
   // Until it exists every booking control falls back to the contact page.
   bookingUrl: "/contact",
-  // Portrait file under /public, or null while none has been supplied.
-  // Needs a cut-out subject on transparency. PRD decision 4.
-  portrait: null as string | null,
+  // Portrait under /public, or null to fall back to a stand-in.
+  portrait: "/stefan-portrait.jpg" as string | null,
+  // Handwritten mark, used as a CSS mask so it can be recoloured. Its own
+  // pixels are mint green, which fights the brand green, so only its alpha
+  // channel is kept.
+  signature: "/signature.png",
   /** Google Search Console HTML tag token, or null until verified. */
   googleSiteVerification: null as string | null,
   keywords: [

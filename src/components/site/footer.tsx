@@ -6,9 +6,9 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 /**
- * Footer shell. PRD section 8.11.
- * The signature mark is deliberately absent until PRD decision 3 is settled,
- * so the two competing greens never appear together by accident.
+ * Footer. PRD section 8.11, decision 3.
+ * Monogram in the header and here, signature in this footer only, and the
+ * vivid green kept for controls, so the two greens never sit side by side.
  */
 export function Footer() {
   const year = new Date().getFullYear();
@@ -94,7 +94,7 @@ export function Footer() {
               </ul>
             </div>
 
-            <div>
+            <div className="col-span-2 sm:col-span-1">
               <h2 className="text-xs uppercase tracking-widest text-muted-foreground">
                 Contact
               </h2>
@@ -102,7 +102,7 @@ export function Footer() {
                 <li>
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="break-all text-sm text-foreground/80 transition-colors hover:text-foreground"
+                    className="break-words text-sm text-foreground/80 transition-colors hover:text-foreground"
                   >
                     {siteConfig.email}
                   </a>
@@ -119,10 +119,31 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 border-t border-border pt-8">
+        <div className="mt-16 flex flex-col gap-6 border-t border-border pt-8 sm:flex-row sm:items-end sm:justify-between">
           <p className="text-xs font-light text-muted-foreground/60">
             &copy; {year} {siteConfig.name}. Remote, working globally.
           </p>
+
+          {/*
+            The mark is drawn through a mask rather than shown as an image,
+            so its own mint green never sits next to the brand green. Only
+            the alpha channel of the file is used.
+          */}
+          <span
+            role="img"
+            aria-label={`${siteConfig.name} signature`}
+            className="h-12 w-36 shrink-0 bg-foreground/60"
+            style={{
+              maskImage: `url(${siteConfig.signature})`,
+              WebkitMaskImage: `url(${siteConfig.signature})`,
+              maskRepeat: "no-repeat",
+              WebkitMaskRepeat: "no-repeat",
+              maskSize: "contain",
+              WebkitMaskSize: "contain",
+              maskPosition: "left bottom",
+              WebkitMaskPosition: "left bottom",
+            }}
+          />
         </div>
       </div>
     </footer>

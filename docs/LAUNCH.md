@@ -42,19 +42,27 @@ Send one real test message after configuring. Until then the form refuses
 submissions and tells the sender to email instead, which is honest but not
 what you want live.
 
-### 5. Logo
-`src/components/site/monogram.tsx` is my approximation of your S mark, drawn
-from the images you sent. Replace the path with your real SVG.
+### 5. Monogram
+`src/components/site/monogram.tsx` is still my approximation of your angular
+S mark, drawn from the images you sent. The file itself has never reached
+the repository. Drop the real SVG in and replace the path.
+
+The handwritten signature is in place. It sits at the foot of the footer,
+drawn through a CSS mask so only its shape is used and its own mint green
+never appears next to the brand green.
 
 ---
 
 ## Should do before launch
 
-### Portrait
-`siteConfig.portrait` is null, so the about page shows a stand-in. The
-headshot you supplied has a white studio background and cannot sit on a
-near-black page. Supply a cut-out on transparency, drop it in `/public`, and
-set the path.
+### Portrait, optional improvement
+The headshot is in place on the about page. It could not be cut out: the
+background is near-white and the shirt is white, so an automatic mask would
+have eaten both. It is framed instead, lightly desaturated, and dissolved
+into the page along its bottom edge.
+
+A hand cut-out on transparency would look better. If one appears, drop it in
+and delete the scrim in `portrait.tsx`.
 
 ### Blog posts
 Three posts are written and live on the preview. They are drafts in your
