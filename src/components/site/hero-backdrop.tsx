@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useSyncExternalStore } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import dynamic from "next/dynamic";
 import type { Application } from "@splinetool/runtime";
 
@@ -12,7 +18,9 @@ import { heroBackdrop } from "@/config/site";
  */
 const Spline = dynamic(() => import("@splinetool/react-spline"), {
   ssr: false,
-  loading: () => <CodedBackdrop />,
+  // The coded backdrop is already painted underneath, so there is nothing
+  // to stand in for here.
+  loading: () => null,
 });
 
 /**
@@ -67,20 +75,44 @@ function CodedBackdrop() {
 }
 
 /**
- * Spline path, off by default. Kept so an owned scene can be dropped in
- * later without rebuilding the hero.
+ * Spline path.
  *
- * Two safeguards, because a background scene must never cost more than the
- * page it sits behind:
+ * A 3D scene behind text has to earn its place, so four things hold it back
+ * from costing more than the page it sits behind:
+ *
+ *  - the CSS backdrop paints first and stays underneath, so the hero is
+ *    never empty and never waits on WebGL
+ *  - the runtime is not even fetched until the browser goes idle, which
+ *    keeps it out of the way of first paint and of the hero text
  *  - renderOnDemand, so idle frames are not drawn
- *  - stopped whenever the hero is scrolled out of view
+ *  - the scene is stopped outright whenever the hero leaves the viewport
+ *
+ * The scene fades in once it reports itself loaded, so there is no flash
+ * between the two backdrops.
  */
 function SplineBackdrop() {
   const appRef = useRef<Application | null>(null);
   const hostRef = useRef<HTMLDivElement | null>(null);
+  const [mountScene, setMountScene] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const onLoad = useCallback((app: Application) => {
     appRef.current = app;
+    setLoaded(true);
+  }, []);
+
+  // Wait for a quiet main thread before pulling in the runtime at all.
+  useEffect(() => {
+    const start = () => setMountScene(true);
+    const supportsIdle = typeof window.requestIdleCallback === "function";
+    const handle = supportsIdle
+      ? window.requestIdleCallback(start, { timeout: 2500 })
+      : window.setTimeout(start, 1200);
+
+    return () => {
+      if (supportsIdle) window.cancelIdleCallback(handle);
+      else window.clearTimeout(handle);
+    };
   }, []);
 
   useEffect(() => {
@@ -103,12 +135,22 @@ function SplineBackdrop() {
 
   return (
     <div ref={hostRef} className="absolute inset-0" aria-hidden="true">
-      <Spline
-        scene={heroBackdrop.splineScene}
-        renderOnDemand
-        onLoad={onLoad}
-        className="h-full w-full"
-      />
+      <CodedBackdrop />
+
+      {mountScene ? (
+        <div
+          className={`absolute inset-0 transition-opacity duration-700 ${
+            loaded ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <Spline
+            scene={heroBackdrop.splineScene}
+            renderOnDemand
+            onLoad={onLoad}
+            className="h-full w-full"
+          />
+        </div>
+      ) : null}
     </div>
   );
 }

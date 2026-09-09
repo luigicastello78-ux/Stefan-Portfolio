@@ -42,16 +42,18 @@ export const siteConfig = {
 /**
  * Hero backdrop.
  *
- * "coded" is a CSS-only animated backdrop. It costs effectively nothing
- * because it only animates transform and opacity.
+ * "spline" loads the 3D scene over the coded backdrop, deferred until the
+ * browser is idle and stopped whenever the hero leaves the viewport.
  *
- * "spline" loads a 3D scene. The placeholder scene measured at 0 to 3 frames
- * per second on this machine, so it is off by default. Switch the provider
- * back once there is an owned scene that is built for a background and has
- * been measured. PRD section 6.3.
+ * "coded" is the CSS-only backdrop on its own. It costs effectively nothing
+ * because it animates transform and opacity only, and it is what everyone
+ * on a phone or with reduced motion turned on receives either way.
+ *
+ * The scene below is still a third-party asset and has to be replaced with
+ * an owned one before launch. PRD section 6.3.
  */
 export const heroBackdrop = {
-  provider: "coded" as "coded" | "spline",
+  provider: "spline" as "coded" | "spline",
   splineScene: "https://prod.spline.design/Slk6b8kz3LRlKiyk/scene.splinecode",
 };
 

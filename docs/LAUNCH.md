@@ -18,14 +18,19 @@ caption and a cover image. Then set `isPlaceholderWork` to `false` and the
 warning banner disappears.
 
 ### 2. The 3D scene
-The hero currently uses a CSS backdrop, so nothing third-party is being
-served. The Spline scene URL in `src/config/site.ts` still points at
-somebody else's scene and must not be switched on as it stands.
+The Spline hero is on, at your request, with the CSS backdrop underneath it
+and every safeguard I could add. The scene URL still points at somebody
+else's scene, which cannot ship.
 
-If you want a 3D hero, build your own scene, put its URL in
-`heroBackdrop.splineScene`, set `provider` to `"spline"`, and measure the
-frame rate before deciding. The old scene ran at single-digit frames per
-second.
+It also freezes the page for about eight seconds while it initialises, once,
+roughly a second after load. Steady state afterwards is fine. That cost is
+inside the Spline runtime parsing this scene and is not fixable from the
+application.
+
+Build your own scene, keep it light, put the URL in
+`heroBackdrop.splineScene`, and measure the initialisation the same way
+before you ship it. Setting `heroBackdrop.provider` to `"coded"` turns the
+3D off again in one line.
 
 ### 3. Booking link
 `siteConfig.bookingUrl` falls back to the contact page. Every "book a call"

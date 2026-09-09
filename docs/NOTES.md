@@ -12,7 +12,7 @@ build time and the production build fails with six module-not-found errors.
 The version is pinned exactly, not caret-ranged. Do not widen it without
 rebuilding and confirming `npm run build` still passes.
 
-## The hero backdrop is CSS, not Spline
+## The hero backdrop is Spline over CSS
 
 The placeholder Spline scene was measured in a production build on this
 machine. It loaded a WebGL runtime, produced individual frames as long as
@@ -27,11 +27,37 @@ no canvas, no WebGL and no JavaScript animation loop. The gradients are soft
 by construction rather than blurred, because a blur filter across most of
 the viewport is expensive to composite and looked no different here.
 
-The Spline path is still in `hero-backdrop.tsx` and still wired up. Switch
-`heroBackdrop.provider` in `src/config/site.ts` back to "spline" once there
-is an owned scene. That path already carries two safeguards: renderOnDemand,
-and stopping the scene whenever the hero scrolls out of view. Measure any
-new scene before shipping it.
+The provider is now set back to "spline" at the owner's request. The CSS
+backdrop did not go away: it paints first and stays underneath, so the hero
+is never empty and never waits on WebGL, and it is still what phones and
+anyone with reduced motion receive.
+
+Four things hold the scene back from costing more than the page:
+
+- the CSS backdrop underneath, so nothing waits on the 3D
+- the runtime is not fetched until the browser goes idle
+- renderOnDemand, so idle frames are not drawn
+- the scene is stopped outright when the hero leaves the viewport
+
+Measured after those were added, on the production build:
+
+| | |
+|---|---|
+| Steady state, main thread blocked | 1.1 percent, one 54ms task in 5s |
+| Scene initialisation | a single 7.9 second blocking task |
+| Starts at | 1.2 seconds after load, once idle |
+| JavaScript, homepage | 715 KB, up from 158 KB |
+
+The steady state is genuinely fine, and renderOnDemand is why. The
+initialisation is not. For nearly eight seconds the page cannot be scrolled
+or clicked. That cost is inside the Spline runtime parsing this particular
+scene and cannot be fixed from application code.
+
+The scene is also still a third-party asset. Both problems have the same
+answer: build a lighter, owned scene, put its URL in
+`heroBackdrop.splineScene`, and measure it the same way before shipping.
+
+To turn it off again, set `heroBackdrop.provider` to "coded". One line.
 
 ## The playground is a separate application
 
