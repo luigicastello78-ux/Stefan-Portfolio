@@ -65,10 +65,27 @@ const config: Config = {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        // Hero backdrop. Transform and opacity only, so these stay on the
+        // compositor and never touch layout or paint.
+        "drift-a": {
+          "0%, 100%": { transform: "translate3d(0, 0, 0) scale(1)" },
+          "50%": { transform: "translate3d(6%, -4%, 0) scale(1.08)" },
+        },
+        "drift-b": {
+          "0%, 100%": { transform: "translate3d(0, 0, 0) scale(1.06)" },
+          "50%": { transform: "translate3d(-5%, 5%, 0) scale(1)" },
+        },
+        "grid-pan": {
+          "0%": { transform: "translate3d(0, 0, 0)" },
+          "100%": { transform: "translate3d(0, 64px, 0)" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         "fade-in": "fade-in 0.5s ease-out forwards",
+        "drift-a": "drift-a 28s ease-in-out infinite",
+        "drift-b": "drift-b 36s ease-in-out infinite",
+        "grid-pan": "grid-pan 16s linear infinite",
       },
     },
   },

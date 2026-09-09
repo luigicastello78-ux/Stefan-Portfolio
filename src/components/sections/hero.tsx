@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { SplineBackground } from "@/components/site/spline-background";
+import { HeroBackdrop } from "@/components/site/hero-backdrop";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 export function Hero() {
   return (
     <section className="relative flex min-h-screen items-end overflow-hidden bg-hero-bg">
-      <SplineBackground />
+      <HeroBackdrop />
 
       <div
         className="pointer-events-none absolute inset-0 z-[1] bg-black/30"
