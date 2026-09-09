@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Book a call or send a message. Thirty minutes, no pitch. Remote, working globally.",
+  alternates: { canonical: "/contact" },
 };
 
 /** A booking link exists only once the owner supplies one. PRD section 10.1. */

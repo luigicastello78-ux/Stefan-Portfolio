@@ -173,4 +173,4 @@ The held state at the end is deliberate. The site will be finished and waiting o
 | 2 | Done | Spline hero and the five homepage sections. Placeholder projects and the third-party scene are still in place, both launch blockers. |
 | 3 | Done | Work, services, process, about and contact pages, contact API, chat loader, Vite playground. Booking link, chat vendor and form destination all still unconfigured. |
 | 4 | Done | MDX pipeline, blog index, post template, three drafted posts, FAQ section. Posts need the owner's edit before launch. |
-| 5 | Not started | |
+| 5 | Done | Metadata, structured data, sitemap, robots, share cards, analytics, accessibility and performance passes. Held for the owner's assets and Vercel login. See LAUNCH.md. |

@@ -2,8 +2,22 @@ import Link from "next/link";
 
 import type { Project } from "@/content/projects";
 
-/** Visual card, one-line caption. PRD section 8.4. No case-study pages. */
-export function ProjectCard({ project }: { project: Project }) {
+/**
+ * Visual card, one-line caption. PRD section 8.4. No case-study pages.
+ *
+ * The heading level is a prop because the same card sits under a section
+ * heading on the homepage and directly under the page title on /work.
+ * Hard-coding it produced a jump from h1 to h3 on the work page.
+ */
+export function ProjectCard({
+  project,
+  headingLevel = "h3",
+}: {
+  project: Project;
+  headingLevel?: "h2" | "h3";
+}) {
+  const Heading = headingLevel;
+
   return (
     <Link
       href={project.href}
@@ -24,9 +38,9 @@ export function ProjectCard({ project }: { project: Project }) {
             </span>
           ))}
         </div>
-        <h3 className="mt-5 text-lg font-semibold tracking-tight text-foreground">
+        <Heading className="mt-5 text-lg font-semibold tracking-tight text-foreground">
           {project.name}
-        </h3>
+        </Heading>
         <p className="mt-2 text-sm font-light leading-relaxed text-muted-foreground">
           {project.caption}
         </p>

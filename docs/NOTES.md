@@ -67,3 +67,20 @@ Prose styling is in `src/mdx-components.tsx`, mapped onto the design tokens
 rather than a typography plugin, so the reading view cannot drift from the
 rest of the site. The reading measure is capped in the post layout at 38rem,
 which is about 76 characters per line in Sora at 16px.
+
+## --input was raised from the reference spec
+
+The spec set both `--border` and `--input` to `0 0% 20%`. Against the page
+background that measures 1.38:1, and WCAG 1.4.11 asks for 3:1 on the
+boundary of a meaningful control. Form fields are meaningful controls.
+
+`--input` is now `0 0% 42%`, which measures 3.27:1. `--border` is unchanged
+at 20%, because decorative separators are exempt. This is the one place the
+palette deviates from the supplied specification, and it is deliberate.
+
+## Share card fonts are committed, not fetched
+
+`src/assets/fonts` holds Sora at 400 and 700 as TTF. The opengraph-image
+routes read them from disk so a build never depends on Google Fonts being
+reachable. They are used only at build time and never served to visitors,
+who get the self-hosted next/font files instead.

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "Work",
   description:
     "Selected builds. Websites, web apps and automation, shipped with AI-assisted development and reviewed line by line.",
+  alternates: { canonical: "/work" },
 };
 
 export default function WorkPage() {
@@ -33,7 +34,7 @@ export default function WorkPage() {
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <Reveal as="li" key={project.slug} delay={(index % 3) * 0.08}>
-              <ProjectCard project={project} />
+              <ProjectCard project={project} headingLevel="h2" />
             </Reveal>
           ))}
         </ul>

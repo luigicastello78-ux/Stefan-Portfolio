@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Self-taught developer working through AI-assisted builds alongside real code. Three years shipping websites, apps and automation.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

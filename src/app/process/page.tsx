@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Process",
   description:
     "How an AI-assisted build runs, start to finish. Discovery, generation, human review, automation, deployment.",
+  alternates: { canonical: "/process" },
 };
 
 /** What actually happens in each step, and what you do. */

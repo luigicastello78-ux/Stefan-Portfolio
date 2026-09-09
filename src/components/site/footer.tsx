@@ -17,7 +17,7 @@ export function Footer() {
     <footer className="border-t border-border bg-hero-bg">
       <div className="px-8 py-16 lg:px-16">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
-          <div className="max-w-sm">
+          <div className="min-w-0 max-w-sm">
             <Link
               href="/"
               className="flex items-center gap-2.5 text-foreground"
@@ -43,7 +43,7 @@ export function Footer() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-12 sm:grid-cols-3">
+          <div className="grid min-w-0 grid-cols-2 gap-8 sm:grid-cols-3 lg:gap-12">
             <div>
               <h2 className="text-xs uppercase tracking-widest text-muted-foreground">
                 Site
@@ -102,7 +102,7 @@ export function Footer() {
                 <li>
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="text-sm text-foreground/80 transition-colors hover:text-foreground"
+                    className="break-all text-sm text-foreground/80 transition-colors hover:text-foreground"
                   >
                     {siteConfig.email}
                   </a>

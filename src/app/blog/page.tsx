@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Notes on AI-assisted development. What vibe coding is, how a build runs, and what AI does and does not speed up.",
+  alternates: { canonical: "/blog" },
 };
 
 export default function BlogPage() {

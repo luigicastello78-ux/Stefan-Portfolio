@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "AI-assisted website builds, web apps and MVPs, automation workflows, technical SEO, deployment and operations.",
+  alternates: { canonical: "/services" },
 };
 
 /** Extra depth that the homepage cards deliberately leave out. */

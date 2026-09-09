@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { JsonLd } from "@/components/site/json-ld";
 import { Reveal } from "@/components/site/reveal";
 import { buttonVariants } from "@/components/ui/button";
 import { formatPostDate, getPost, posts } from "@/content/posts";
 import { siteConfig } from "@/config/site";
+import { articleSchema } from "@/lib/structured-data";
 
 export const dynamicParams = false;
 
@@ -50,6 +52,7 @@ export default async function PostPage({
 
   return (
     <>
+      <JsonLd data={articleSchema(post)} />
       <header className="border-b border-border bg-hero-bg px-6 pb-16 pt-36 md:px-10 lg:px-16 lg:pb-20 lg:pt-44">
         <div className="mx-auto max-w-3xl">
           <Reveal>

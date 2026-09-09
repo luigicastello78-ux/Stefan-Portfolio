@@ -17,6 +17,18 @@ export const siteConfig = {
   // Portrait file under /public, or null while none has been supplied.
   // Needs a cut-out subject on transparency. PRD decision 4.
   portrait: null as string | null,
+  /** Google Search Console HTML tag token, or null until verified. */
+  googleSiteVerification: null as string | null,
+  keywords: [
+    "vibe code developer",
+    "AI web developer",
+    "AI-assisted development",
+    "AI developer for startups",
+    "build MVP with AI",
+    "AI automation developer",
+    "n8n automation freelancer",
+    "rapid MVP development",
+  ],
   social: {
     github: "#",
     linkedin: "#",
