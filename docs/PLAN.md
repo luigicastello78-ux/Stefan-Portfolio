@@ -162,3 +162,15 @@ The PRD lists eight phases. Those are consolidated here into five deliverable pa
 | Launch-ready, Part 5 | Day 6, then held for your real content |
 
 The held state at the end is deliberate. The site will be finished and waiting on the preview URL. It goes public the day you hand over real projects, your own Spline scene, and the booking link.
+
+---
+
+## Status
+
+| Part | State | Notes |
+|---|---|---|
+| 1 | Done | Scaffold, tokens, Sora, motion, navigation, footer. Vercel link still outstanding, needs the owner's login. |
+| 2 | Done | Spline hero and the five homepage sections. Placeholder projects and the third-party scene are still in place, both launch blockers. |
+| 3 | Not started | |
+| 4 | Not started | |
+| 5 | Not started | |

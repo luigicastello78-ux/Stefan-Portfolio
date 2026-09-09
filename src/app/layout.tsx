@@ -40,6 +40,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={sora.variable}>
+      <head>
+        {/* Scroll-revealed sections start hidden and are shown by script.
+            Without script they must never stay invisible. */}
+        <noscript>
+          <style>{`.reveal-init{opacity:1 !important;animation:none !important}`}</style>
+        </noscript>
+      </head>
       <body className="min-h-screen bg-hero-bg font-sora antialiased">
         <a
           href="#main"
