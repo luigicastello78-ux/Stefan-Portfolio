@@ -24,7 +24,7 @@ export default function WorkPage() {
         lede="A caption each, not a case study. The detail lives in a conversation, where you can ask the awkward questions."
       />
 
-      <section className="bg-background px-6 py-20 md:px-10 lg:px-16 lg:py-28">
+      <section className="site-container bg-background py-20 lg:py-28">
         {isPlaceholderWork ? (
           <Reveal className="mb-12 block">
             <PlaceholderNotice />

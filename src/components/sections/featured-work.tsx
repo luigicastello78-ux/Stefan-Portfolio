@@ -16,7 +16,7 @@ export function FeaturedWork() {
   return (
     <section
       id="work"
-      className="border-t border-border bg-hero-bg px-6 py-24 md:px-10 lg:px-16 lg:py-32"
+      className="site-container border-t border-border bg-hero-bg py-24 lg:py-32"
     >
       <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <SectionHeading

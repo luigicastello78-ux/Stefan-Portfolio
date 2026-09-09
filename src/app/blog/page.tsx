@@ -21,7 +21,7 @@ export default function BlogPage() {
         lede="Written for people deciding whether to hire someone who works this way. No hype, and no pretending the tools do more than they do."
       />
 
-      <section className="bg-background px-6 py-20 md:px-10 lg:px-16 lg:py-28">
+      <section className="site-container bg-background py-20 lg:py-28">
         <ul className="mx-auto grid max-w-4xl gap-px overflow-hidden rounded-lg border border-border bg-border">
           {posts.map((post, index) => (
             <Reveal as="li" key={post.slug} delay={index * 0.06}>

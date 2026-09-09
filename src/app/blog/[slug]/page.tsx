@@ -53,7 +53,7 @@ export default async function PostPage({
   return (
     <>
       <JsonLd data={articleSchema(post)} />
-      <header className="border-b border-border bg-hero-bg px-6 pb-16 pt-36 md:px-10 lg:px-16 lg:pb-20 lg:pt-44">
+      <header className="site-container border-b border-border bg-hero-bg pb-16 pt-36 lg:pb-20 lg:pt-44">
         <div className="mx-auto max-w-3xl">
           <Reveal>
             <Link
@@ -83,7 +83,7 @@ export default async function PostPage({
         </div>
       </header>
 
-      <article className="bg-background px-6 py-16 md:px-10 lg:px-16 lg:py-24">
+      <article className="site-container bg-background py-16 lg:py-24">
         {/* Measure is capped here rather than in the prose components. */}
         <div className="mx-auto max-w-[38rem]">
           <Content />
@@ -107,7 +107,7 @@ export default async function PostPage({
       </article>
 
       {others.length ? (
-        <section className="border-t border-border bg-hero-bg px-6 py-20 md:px-10 lg:px-16">
+        <section className="site-container border-t border-border bg-hero-bg py-20">
           <div className="mx-auto max-w-4xl">
             <h2 className="text-xs uppercase tracking-[0.3em] text-primary">
               Keep reading

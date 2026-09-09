@@ -24,7 +24,7 @@ export default function AboutPage() {
         lede="One person. No agency layer, no account manager, no handoff to somebody you have never spoken to."
       />
 
-      <section className="bg-background px-6 py-20 md:px-10 lg:px-16 lg:py-28">
+      <section className="site-container bg-background py-20 lg:py-28">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-4">
             <div className="lg:sticky lg:top-32">

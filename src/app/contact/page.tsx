@@ -25,7 +25,7 @@ export default function ContactPage() {
         lede="Thirty minutes, no pitch. You describe the problem, I tell you whether it is worth building and roughly what it takes."
       />
 
-      <section className="bg-background px-6 py-20 md:px-10 lg:px-16 lg:py-28">
+      <section className="site-container bg-background py-20 lg:py-28">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
             <Reveal>

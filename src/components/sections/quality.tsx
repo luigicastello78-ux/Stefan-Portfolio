@@ -24,7 +24,7 @@ export function Quality() {
   return (
     <section
       id="quality"
-      className="border-t border-border bg-hero-bg px-6 py-24 md:px-10 lg:px-16 lg:py-32"
+      className="site-container border-t border-border bg-hero-bg py-24 lg:py-32"
     >
       <SectionHeading
         eyebrow="The obvious question"

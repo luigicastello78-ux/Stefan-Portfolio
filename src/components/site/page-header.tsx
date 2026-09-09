@@ -9,7 +9,7 @@ type PageHeaderProps = {
 /** Shared masthead for inner pages. One H1 per page lives here. */
 export function PageHeader({ eyebrow, title, lede }: PageHeaderProps) {
   return (
-    <header className="border-b border-border bg-hero-bg px-6 pb-16 pt-36 md:px-10 lg:px-16 lg:pb-24 lg:pt-44">
+    <header className="site-container border-b border-border bg-hero-bg pb-16 pt-36 lg:pb-24 lg:pt-44">
       <div className="max-w-3xl">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.3em] text-primary">

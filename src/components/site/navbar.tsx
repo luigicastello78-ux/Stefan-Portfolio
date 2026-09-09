@@ -34,7 +34,7 @@ export function Navbar() {
     >
       <nav
         aria-label="Main"
-        className="flex items-center justify-between px-8 py-5 lg:px-16"
+        className="site-container flex items-center justify-between py-5"
       >
         <Link
           href="/"

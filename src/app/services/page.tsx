@@ -47,7 +47,7 @@ export default function ServicesPage() {
         lede="No packages and no price list. Work is hourly or on a monthly retainer, and which one suits you comes out of the first call."
       />
 
-      <section className="bg-background px-6 py-20 md:px-10 lg:px-16 lg:py-28">
+      <section className="site-container bg-background py-20 lg:py-28">
         <ol className="border-t border-border">
           {services.map((service, index) => {
             const detail = expanded[service.number];

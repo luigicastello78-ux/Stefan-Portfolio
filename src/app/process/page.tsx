@@ -53,7 +53,7 @@ export default function ProcessPage() {
         lede="The same five steps every time. Nothing about it is mysterious, and none of it skips review."
       />
 
-      <section className="bg-background px-6 py-20 md:px-10 lg:px-16 lg:py-28">
+      <section className="site-container bg-background py-20 lg:py-28">
         <ol className="border-t border-border">
           {processSteps.map((step, index) => {
             const detail = expanded[step.number];

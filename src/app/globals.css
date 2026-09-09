@@ -65,6 +65,48 @@
 }
 
 /*
+  Page container.
+
+  Apply to an element that spans the full viewport width: a <section>, the
+  <nav> inside the fixed header, the footer's inner wrapper. The background
+  stays edge to edge while the content is held to one maximum width with a
+  consistent gutter at every breakpoint.
+
+  It is written as padding rather than a nested max-width wrapper so a
+  section needs one class instead of an extra div, and so a background can
+  never drift apart from the content sitting on it.
+
+  The one rule: the element carrying this class must be full width. On a
+  narrower parent the percentage resolves against that parent and the
+  content stops lining up with the rest of the page.
+*/
+@layer components {
+  .site-container {
+    --site-container-max: 1400px;
+    --site-container-gutter: 1.5rem;
+
+    padding-inline: max(
+      var(--site-container-gutter),
+      calc(
+        (100% - var(--site-container-max)) / 2 + var(--site-container-gutter)
+      )
+    );
+  }
+
+  @media (min-width: 768px) {
+    .site-container {
+      --site-container-gutter: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .site-container {
+      --site-container-gutter: 4rem;
+    }
+  }
+}
+
+/*
   Reduced motion guard. PRD section 6.5.
   Entrance animation is removed entirely rather than shortened, so nothing
   can be left stuck at opacity 0 for anyone who opts out.

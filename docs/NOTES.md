@@ -84,3 +84,22 @@ palette deviates from the supplied specification, and it is deliberate.
 routes read them from disk so a build never depends on Google Fonts being
 reachable. They are used only at build time and never served to visitors,
 who get the self-hosted next/font files instead.
+
+## One container class, not a wrapper div
+
+`.site-container` in `globals.css` holds every section's content to 1400px
+with a gutter of 1.5rem, 2.5rem or 4rem depending on breakpoint. It is
+applied to the section itself, the nav inside the fixed header, and the
+footer's inner wrapper.
+
+It works by padding rather than a nested max-width div, so a section needs
+one class instead of an extra element, and a full-bleed background can never
+come apart from the content sitting on it.
+
+The one rule: the element carrying the class must span the full viewport
+width, because the calculation uses a percentage of its own box. The hero is
+the exception in shape, not in rule. Its text column has its own max width,
+so the class sits on a full-width wrapper around that column.
+
+To change the site's maximum width, change `--site-container-max` in that
+one rule.

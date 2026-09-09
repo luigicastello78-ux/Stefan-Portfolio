@@ -15,7 +15,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border bg-hero-bg">
-      <div className="px-8 py-16 lg:px-16">
+      <div className="site-container py-16">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
           <div className="min-w-0 max-w-sm">
             <Link

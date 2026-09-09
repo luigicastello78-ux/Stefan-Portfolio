@@ -13,7 +13,7 @@ export function Faq() {
   return (
     <section
       id="faq"
-      className="border-t border-border bg-background px-6 py-24 md:px-10 lg:px-16 lg:py-32"
+      className="site-container border-t border-border bg-background py-24 lg:py-32"
     >
       <SectionHeading
         eyebrow="Questions"
