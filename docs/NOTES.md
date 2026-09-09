@@ -47,3 +47,23 @@ search results.
 It shares the design tokens by copying `tailwind.config.ts` and the token
 block from `globals.css`. That is a copy, not an import. If the palette
 changes, change it in both places.
+
+## Blog metadata lives inside the MDX
+
+Posts are `.mdx` files under `src/content/posts`, each exporting a `meta`
+object. That is plain ESM, so no remark or rehype frontmatter plugin is
+needed, which matters because Turbopack cannot accept plugins with
+non-serializable options.
+
+`src/content/posts.ts` is the registry. It is server only: it reads the
+source files with `node:fs` to count words for the reading time, which runs
+once at build because every blog route is statically generated.
+
+With three posts the index route bundles all three bodies. That is a few
+kilobytes. If this ever reaches a few dozen posts, split metadata into a
+manifest so the index stops importing the bodies.
+
+Prose styling is in `src/mdx-components.tsx`, mapped onto the design tokens
+rather than a typography plugin, so the reading view cannot drift from the
+rest of the site. The reading measure is capped in the post layout at 38rem,
+which is about 76 characters per line in Sora at 16px.

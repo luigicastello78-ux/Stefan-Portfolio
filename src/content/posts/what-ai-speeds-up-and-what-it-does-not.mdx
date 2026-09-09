@@ -1,0 +1,63 @@
+export const meta = {
+  title: "What AI speeds up, and what it does not",
+  description:
+    "An honest split between the parts of building software that collapsed and the parts that did not move at all.",
+  date: "2026-08-29",
+  tags: ["AI", "Opinion"],
+};
+
+The claim that AI makes development ten times faster is true for a narrow slice of the work and false for the rest. Since the slice it is true for used to be most of the calendar time, the overall effect is real. But which parts moved and which did not is worth being precise about, because the difference tells you what to hand over and what to keep.
+
+## What genuinely collapsed
+
+**Starting.** The first version of anything used to be an hour or a day of setup before there was something to look at. That is now minutes. This matters more than it sounds, because the cost of starting is what stops people exploring alternatives.
+
+**Boilerplate.** Forms, validation, configuration, wiring, the fourteenth variation on a card component. Work that was never difficult, only slow.
+
+**Unfamiliar territory.** Using a library you touch twice a year used to mean reading documentation for twenty minutes. Now it means describing what you want and correcting the result, which is faster even accounting for the corrections.
+
+**Translation.** Moving something from one language, framework or format to another. Tedious, mechanical, and exactly the shape of problem these models handle well.
+
+**The second version.** Rewriting something you already understand, differently. Cheap enough now that throwing away a first attempt stopped being painful, which quietly improves the work more than any of the above.
+
+## What did not move at all
+
+**Deciding what to build.** No model knows your customers, your constraints, or the political reason the last attempt failed. This was always the hardest part and it is untouched.
+
+**Knowing when something is wrong.** A model cannot tell you that its own output is subtly incorrect, because if it could tell, it would not have written it. Verification is still entirely a person.
+
+**Integration reality.** The third-party API that behaves differently from its documentation. The legacy system that returns a two hundred status with an error in the body. Nothing about this got easier.
+
+**Debugging your specific mess.** Models are good at generic bugs and poor at the one caused by an interaction between three things unique to your codebase.
+
+**Taste.** Whether a layout reads well, whether copy sounds like a person, whether an interaction feels right. You can generate a hundred options. Choosing is still yours.
+
+**Responsibility.** When it breaks at eleven at night, no model is on the call.
+
+## The trap in the middle
+
+There is a category that looks fast and is not, and it catches people.
+
+Anything where the model produces something plausible that you cannot easily verify. Complex business logic. Data transformations with edge cases. Anything involving money, dates or timezones.
+
+Generating that code takes seconds. Confirming it is correct takes as long as it ever did, and sometimes longer, because you are auditing unfamiliar code rather than reasoning through code you wrote. If you skip the audit you have not saved time. You have moved the cost to whoever finds the bug.
+
+The rule I use: the more expensive a mistake would be, the less the speed matters, and the more slowly I go.
+
+## What this means in practice
+
+The honest summary is that AI removed most of the waiting and none of the thinking.
+
+For a marketing site, where the thinking is a small fraction of the work, that is close to a ten times improvement. For an application with real business logic, it is maybe two or three times, concentrated in the early stages.
+
+Anyone quoting you a single multiplier for every kind of project has not thought about it properly.
+
+## Why I still lead with speed
+
+Because for the work most clients bring me, the speed is the thing that changed their options.
+
+A founder who can have a working product in a week instead of a month gets to test an idea before committing to it. A business that can rebuild a site in days instead of a quarter stops treating the site as a once-every-three-years event.
+
+That is a genuine change in what is possible, and it is worth saying plainly.
+
+What is not worth saying is that the thinking got easier. It did not. It just became a larger share of the job.

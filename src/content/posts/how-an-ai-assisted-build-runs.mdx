@@ -1,0 +1,77 @@
+export const meta = {
+  title: "How an AI-assisted build actually runs, start to finish",
+  description:
+    "A walk through a real build, from the first call to deployment, and where the AI does and does not touch it.",
+  date: "2026-09-05",
+  tags: ["Process", "AI"],
+};
+
+Most descriptions of AI-assisted development skip the part that matters, which is the ordinary sequence of decisions between somebody wanting a thing and that thing being live. Here is the whole sequence, in order, with nothing left out because it is unglamorous.
+
+## Day zero: the call
+
+Thirty minutes. No slides.
+
+I want three things out of it. What the thing is for, who it is aimed at, and what happens if it does not exist. That third question does more work than the other two. If nobody can answer it, the project usually should not start.
+
+The AI does nothing here. This is the part where projects quietly fail, and no model has any idea what your business needs.
+
+## Day one: the brief becomes a prompt
+
+I write a specification. Not a formal document, but a real one: pages, sections, what each one has to do, what the content is, where the data comes from, what counts as finished.
+
+This is where AI-assisted work either gets fast or falls apart. A vague brief produces a vague first draft, and correcting a vague draft takes longer than writing the thing yourself. A precise brief produces something close enough to argue with.
+
+I usually draft the specification with the model too, as an interrogation rather than a request. I describe the project and ask it what is missing. It is reliably good at spotting the unasked question, which is a different skill from writing code.
+
+## Day one, later: the first draft appears
+
+Now the speed shows up.
+
+Scaffolding, layout, components, routing, forms, the shape of the data. On a normal marketing site this is a few hours for something that renders and mostly works.
+
+It is not finished. It is a version to react to, which is worth far more than a blank editor. Seeing a wrong version of a page tells you more about what the page should be than an hour of thinking about it.
+
+## Days one to three: the actual work
+
+This is the majority of the time and it is entirely review.
+
+I read everything. I rewrite the parts that are wrong. Some specific things I look for every time:
+
+- **Logic that is confidently incorrect.** Off-by-one errors, conditions that read correctly and behave backwards, error branches that swallow the error.
+- **Dependencies I did not ask for.** Models reach for a library when three lines would do.
+- **Accessibility that was skipped.** Labels, focus states, contrast, keyboard order. Generated markup is frequently inaccessible and always looks fine.
+- **Performance nobody measured.** Images, fonts, anything that renders on every frame.
+- **Security handled by hope.** Unvalidated input, secrets in the wrong place, endpoints with no rate limit.
+
+Every one of those has come up on real projects. None of them announce themselves.
+
+## Day three: automation
+
+The site works. Now it has to keep working when nobody is looking at it.
+
+Forms need somewhere to send things. Leads need to arrive where the client already works, which is usually not a new dashboard they will never open. Notifications need to fire. Integrations need to fail loudly rather than silently.
+
+This is mostly plumbing, and plumbing is exactly what these tools are good at. It is also the part clients notice most after launch, because it is the difference between a website and something that runs their business.
+
+## Day four: deployment and handoff
+
+Live, on infrastructure in the client's own accounts. Repository, deployment pipeline, domain, DNS.
+
+Then documentation, which almost nobody does properly. Not a manual, just enough that someone else could pick it up: what the moving parts are, where the configuration lives, what to do when something breaks.
+
+If a client cannot leave me, I have built the wrong thing.
+
+## What the schedule really looks like
+
+Four days is the good case. A marketing site with clear content and a decisive client.
+
+An application takes longer, because applications have state and state has edge cases and edge cases are exactly where generated code is weakest. Two to three weeks for a real MVP is honest.
+
+What has genuinely collapsed is the gap between deciding and seeing. That used to be a week. Now it is an afternoon. Everything downstream of that gets faster because you find out sooner that you were wrong.
+
+## The part I will not compromise on
+
+Nothing ships that I have not read.
+
+That is the whole deal. The speed comes from the first draft being nearly free, not from skipping the part where somebody checks. If a developer tells you they are shipping AI-generated code without reading it, they are not fast. They are gambling with your project.

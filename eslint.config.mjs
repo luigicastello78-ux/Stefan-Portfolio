@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The playground is a separate application with its own tooling.
+    "playground/**",
   ]),
 ]);
 
