@@ -12,7 +12,11 @@ export const siteConfig = {
   url: "https://stefanstankovski.com",
   email: "websites@leadmaker.agency",
   // TODO: replace with the owner's real booking URL. PRD section 10.1.
+  // Until it exists every booking control falls back to the contact page.
   bookingUrl: "/contact",
+  // Portrait file under /public, or null while none has been supplied.
+  // Needs a cut-out subject on transparency. PRD decision 4.
+  portrait: null as string | null,
   social: {
     github: "#",
     linkedin: "#",
@@ -34,6 +38,19 @@ export const siteConfig = {
 export const heroBackdrop = {
   provider: "coded" as "coded" | "spline",
   splineScene: "https://prod.spline.design/Slk6b8kz3LRlKiyk/scene.splinecode",
+};
+
+/**
+ * Embedded chat widget. PRD section 8.10, decision 7.
+ *
+ * Off until the owner has an account and an id. The loader defers the vendor
+ * script until the browser is idle, so it can never delay first paint or
+ * compete with the page for main-thread time.
+ */
+export const chatConfig = {
+  provider: "none" as "none" | "chatbase" | "custom",
+  /** Chatbase bot id, or the full script URL for a custom provider. */
+  id: "",
 };
 
 export type NavItem = {

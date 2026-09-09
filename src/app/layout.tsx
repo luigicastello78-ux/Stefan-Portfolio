@@ -3,6 +3,7 @@ import { Sora } from "next/font/google";
 
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
+import { ChatWidget } from "@/components/site/chat-widget";
 import { siteConfig } from "@/config/site";
 
 import "./globals.css";
@@ -57,6 +58,7 @@ export default function RootLayout({
         <Navbar />
         <main id="main">{children}</main>
         <Footer />
+        <ChatWidget />
       </body>
     </html>
   );

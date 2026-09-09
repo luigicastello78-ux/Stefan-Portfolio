@@ -171,6 +171,6 @@ The held state at the end is deliberate. The site will be finished and waiting o
 |---|---|---|
 | 1 | Done | Scaffold, tokens, Sora, motion, navigation, footer. Vercel link still outstanding, needs the owner's login. |
 | 2 | Done | Spline hero and the five homepage sections. Placeholder projects and the third-party scene are still in place, both launch blockers. |
-| 3 | Not started | |
+| 3 | Done | Work, services, process, about and contact pages, contact API, chat loader, Vite playground. Booking link, chat vendor and form destination all still unconfigured. |
 | 4 | Not started | |
 | 5 | Not started | |

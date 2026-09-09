@@ -32,3 +32,18 @@ The Spline path is still in `hero-backdrop.tsx` and still wired up. Switch
 is an owned scene. That path already carries two safeguards: renderOnDemand,
 and stopping the scene whenever the hero scrolls out of view. Measure any
 new scene before shipping it.
+
+## The playground is a separate application
+
+`playground/` is its own Vite app with its own package.json and its own
+dependency tree. It is deliberately not part of the Next.js build, so an
+experiment cannot break the marketing site.
+
+Run it with `npm run dev --prefix playground`. Deploy it as a second Vercel
+project pointed at that directory, on a subdomain. It sets `noindex`,
+because half-finished experiments should not compete with the real site in
+search results.
+
+It shares the design tokens by copying `tailwind.config.ts` and the token
+block from `globals.css`. That is a copy, not an import. If the palette
+changes, change it in both places.
