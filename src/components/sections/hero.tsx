@@ -3,13 +3,13 @@ import Link from "next/link";
 import { HeroBackdrop } from "@/components/site/hero-backdrop";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
 
 /**
  * Full viewport hero, content anchored bottom-left. PRD section 8.2.
  *
- * The content column is pointer-events-none so clicks reach the 3D scene.
- * The two buttons re-enable pointer events for themselves.
+ * The backdrop takes no pointer events, so the content column no longer has
+ * to be transparent to clicks. That also makes the hero text selectable,
+ * which it was not before.
  *
  * Headline: PRD decision 5, option B, split across the eyebrow and the H1.
  * "From idea to deployed" carries the promise, "days, not weeks" carries the
@@ -26,7 +26,7 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      <div className="site-container pointer-events-none relative z-10 w-full pb-10 pt-32 md:pb-10">
+      <div className="site-container relative z-10 w-full pb-10 pt-32 md:pb-10">
         <div className="max-w-[90%] sm:max-w-md lg:max-w-2xl">
           <p
             className="mb-4 animate-fade-up text-xs uppercase tracking-[0.3em] text-primary opacity-0"
@@ -65,19 +65,13 @@ export function Hero() {
           >
             <Link
               href={siteConfig.bookingUrl}
-              className={cn(
-                buttonVariants({ variant: "hero", size: "xl" }),
-                "pointer-events-auto"
-              )}
+              className={buttonVariants({ variant: "hero", size: "xl" })}
             >
               Book a call
             </Link>
             <Link
               href="/work"
-              className={cn(
-                buttonVariants({ variant: "heroOutline", size: "xl" }),
-                "pointer-events-auto"
-              )}
+              className={buttonVariants({ variant: "heroOutline", size: "xl" })}
             >
               See the work
             </Link>

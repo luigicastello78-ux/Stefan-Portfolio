@@ -129,3 +129,39 @@ so the class sits on a full-width wrapper around that column.
 
 To change the site's maximum width, change `--site-container-max` in that
 one rule.
+
+## Why hovering over the hero was slow
+
+Reported as "slow when I hover with the cursor", and it was.
+
+**Diagnosis.** With the cursor still, the page blocked the main thread for
+0ms over six seconds. Moving the cursor across the hero blocked it for 456ms
+across seven long tasks. So the trigger was pointer movement, not the scene
+animating.
+
+The first guess, that CSS `pointer-events: none` on the canvas would stop
+it, was wrong and measuring proved it: the jank was unchanged. Swallowing
+pointer events at window capture level did fix it, which located the
+listeners. The Spline runtime attaches them to the window, not to the
+canvas, so no amount of CSS on the canvas can help. Every mouse move
+anywhere on the page made it raycast the scene and force a fresh render.
+
+**Fix.** The runtime's `start()` takes an `interactive` flag.
+`@splinetool/react-spline` never exposes it, because it calls `load()`
+instead. So the wrapper is gone and `hero-backdrop.tsx` drives
+`@splinetool/runtime` directly: construct the Application on our own canvas,
+fetch the scene, and call `start(buffer, { interactive: false })`.
+
+| Hovering across the hero | Blocked main thread |
+|---|---|
+| Before | 456ms over seven long tasks |
+| After | 0ms, no long tasks |
+
+Nothing is lost. The scene is decoration behind text and was never meant to
+answer the cursor. Two things improved as a side effect: the hero content no
+longer needs `pointer-events: none`, so the headline is selectable, and
+`@splinetool/react-spline` is one fewer dependency.
+
+The scene load failure is now logged rather than swallowed. A silent catch
+in the first version of this component hid a real failure and cost real
+time.

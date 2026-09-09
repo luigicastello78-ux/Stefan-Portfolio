@@ -7,21 +7,9 @@ import {
   useState,
   useSyncExternalStore,
 } from "react";
-import dynamic from "next/dynamic";
 import type { Application } from "@splinetool/runtime";
 
 import { heroBackdrop } from "@/config/site";
-
-/**
- * Lazy, client only, never server rendered. The hero text paints first and
- * anything heavy arrives afterwards.
- */
-const Spline = dynamic(() => import("@splinetool/react-spline"), {
-  ssr: false,
-  // The coded backdrop is already painted underneath, so there is nothing
-  // to stand in for here.
-  loading: () => null,
-});
 
 /**
  * CSS-only backdrop. Two drifting green glows, a slowly panning grid and a
@@ -75,15 +63,73 @@ function CodedBackdrop() {
 }
 
 /**
+ * The scene itself, driven through the runtime directly rather than through
+ * @splinetool/react-spline.
+ *
+ * The wrapper offers no way to start a scene non-interactively, and that one
+ * flag is the whole difference. The runtime attaches its pointer listeners
+ * to the window, not to the canvas, so no amount of CSS pointer-events can
+ * stop them: every mouse move over the page made it raycast the scene and
+ * force a render. Measured across an identical set of cursor moves, that was
+ * 456ms of blocked main thread over seven long tasks. Started with
+ * interactive false it is nothing at all.
+ *
+ * Nothing is lost. The scene is a background behind text and was never meant
+ * to respond to the cursor.
+ */
+function SplineCanvas({ onReady }: { onReady: (app: Application) => void }) {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    let app: Application | null = null;
+    let cancelled = false;
+
+    const run = async () => {
+      const { Application } = await import("@splinetool/runtime");
+      if (cancelled) return;
+
+      const instance = new Application(canvas, { renderOnDemand: true });
+      const response = await fetch(heroBackdrop.splineScene);
+      const buffer = await response.arrayBuffer();
+      if (cancelled) return;
+
+      instance.start(buffer, { interactive: false });
+      app = instance;
+      onReady(instance);
+    };
+
+    run().catch((error) => {
+      // A background that fails to load is not worth an error state, since
+      // the coded backdrop underneath is already on screen. It is worth a
+      // line in the console, though: swallowing this silently once cost an
+      // afternoon.
+      console.warn("[hero] 3D scene did not start:", error);
+    });
+
+    return () => {
+      cancelled = true;
+      app?.dispose();
+    };
+  }, [onReady]);
+
+  return <canvas ref={canvasRef} className="block h-full w-full" />;
+}
+
+/**
  * Spline path.
  *
- * A 3D scene behind text has to earn its place, so four things hold it back
+ * A 3D scene behind text has to earn its place, so five things hold it back
  * from costing more than the page it sits behind:
  *
  *  - the CSS backdrop paints first and stays underneath, so the hero is
  *    never empty and never waits on WebGL
  *  - the runtime is not even fetched until the browser goes idle, which
  *    keeps it out of the way of first paint and of the hero text
+ *  - the scene is started non-interactive, so moving the cursor costs
+ *    nothing
  *  - renderOnDemand, so idle frames are not drawn
  *  - the scene is stopped outright whenever the hero leaves the viewport
  *
@@ -96,7 +142,7 @@ function SplineBackdrop() {
   const [mountScene, setMountScene] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
-  const onLoad = useCallback((app: Application) => {
+  const onReady = useCallback((app: Application) => {
     appRef.current = app;
     setLoaded(true);
   }, []);
@@ -134,7 +180,11 @@ function SplineBackdrop() {
   }, []);
 
   return (
-    <div ref={hostRef} className="absolute inset-0" aria-hidden="true">
+    <div
+      ref={hostRef}
+      className="pointer-events-none absolute inset-0"
+      aria-hidden="true"
+    >
       <CodedBackdrop />
 
       {mountScene ? (
@@ -143,12 +193,7 @@ function SplineBackdrop() {
             loaded ? "opacity-100" : "opacity-0"
           }`}
         >
-          <Spline
-            scene={heroBackdrop.splineScene}
-            renderOnDemand
-            onLoad={onLoad}
-            className="h-full w-full"
-          />
+          <SplineCanvas onReady={onReady} />
         </div>
       ) : null}
     </div>
