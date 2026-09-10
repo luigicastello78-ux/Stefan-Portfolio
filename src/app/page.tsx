@@ -1,8 +1,7 @@
 import { Hero } from "@/components/sections/hero";
 import { Services } from "@/components/sections/services";
 import { FeaturedWork } from "@/components/sections/featured-work";
-import { Process } from "@/components/sections/process";
-import { Quality } from "@/components/sections/quality";
+import { HowWeWork } from "@/components/sections/how-we-work";
 import { Faq } from "@/components/sections/faq";
 import { ClosingCta } from "@/components/sections/closing-cta";
 import { JsonLd } from "@/components/site/json-ld";
@@ -21,8 +20,7 @@ export default function Home() {
       <Hero />
       <Services />
       <FeaturedWork />
-      <Process />
-      <Quality />
+      <HowWeWork />
       <Faq />
       <ClosingCta />
     </>

@@ -58,7 +58,7 @@ export function FeaturedWork() {
         </Reveal>
       ) : null}
 
-      <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-12 grid gap-6 auto-rows-fr sm:grid-cols-2 lg:grid-cols-3">
         {shown.map((project, position) => (
           <Reveal
             as="li"

@@ -183,15 +183,7 @@ disclosure.
 cover, the next two stack beside it. Three identical cards implied all three
 were equally worth looking at, which is never true of a portfolio.
 
-**Process** has a spine. It is a sequence and the old layout did not say so.
-The rail draws itself as the section scrolls, through `animation-timeline:
-view()`. Browsers without it get a full line and lose nothing, and the rule
-is skipped entirely under reduced motion, which also leaves the line drawn.
-No script, no fallback library.
-
-**Quality** is assumption against reality. The objection is already in the
-reader's head, so naming it and striking it through is more persuasive than
-three columns of prose talking around it.
+**Process and Quality** were later merged. See the note below.
 
 **Closing call to action** is a framed panel, left aligned, with an
 availability pill and a static glow. Centred copy on a full-bleed section
@@ -257,3 +249,30 @@ unfinished next to another.
 The section also carries a count, `03 / 06`, and lists the rest of the
 archive underneath as bare domains. That is a second real route into /work
 and a continuation of the terminal language rather than another button.
+
+## Two sections became one: how we work
+
+The homepage carried a Process timeline and, right after it, a Quality block
+answering "if AI wrote it, is it any good?". Read together they said the same
+thing twice, once as a sequence and once defensively.
+
+They are now a single section, "From your requirements to a finished
+product". Six equal cards, three by two. The objection is answered at stage
+03, where it belongs, as part of the sequence rather than as a separate
+plea. The FAQ underneath still carries the question in full, so nothing was
+lost.
+
+The useful column is the one saying what the client has to do at each stage.
+That is the question people actually have and almost no agency site answers
+it.
+
+Stage 06, after launch, is new. It states the hourly and retainer options
+without pushing either, which the site had nowhere else on the homepage.
+
+`src/content/process.ts` now holds structure, timings and the you/me split
+for both the homepage section and /process, so the two cannot drift. Only
+the longer prose lives on the page.
+
+The scroll-drawn `.timeline-rail` rule went with the old timeline. Grids
+across the work and stage sections use `auto-rows-fr`, so every card matches
+every other card, not just the ones beside it in the same row.
