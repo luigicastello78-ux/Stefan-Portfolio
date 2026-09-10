@@ -18,18 +18,17 @@ import type { Project } from "@/content/projects";
  * heading on the homepage and directly under the page title on /work.
  * Hard-coding it produced a jump from h1 to h3 on the work page.
  *
- * `featured` widens the viewport area and enlarges the type, so a grid can
- * lead with one piece instead of giving every project identical weight.
+ * Every card is the same size. The grid stretches them to a common height
+ * and the footer link is pushed to the bottom, so a long caption in one card
+ * cannot leave the others looking unfinished.
  */
 export function ProjectCard({
   project,
   headingLevel = "h3",
-  featured = false,
   index,
 }: {
   project: Project;
   headingLevel?: "h2" | "h3";
-  featured?: boolean;
   /** Optional running number, shown in the title bar. */
   index?: number;
 }) {
@@ -63,11 +62,7 @@ export function ProjectCard({
       </div>
 
       {/* Viewport. A gradient until real screenshots exist. */}
-      <div
-        className={`relative w-full overflow-hidden ${
-          featured ? "aspect-[16/10]" : "aspect-[4/3]"
-        }`}
-      >
+      <div className="relative aspect-[16/10] w-full overflow-hidden">
         <div
           className={`h-full w-full bg-gradient-to-br ${project.tone} transition-transform duration-700 ease-out group-hover:scale-[1.04]`}
           aria-hidden="true"
@@ -79,7 +74,7 @@ export function ProjectCard({
       </div>
 
       {/* Below the fold of the little browser. */}
-      <div className={`flex flex-1 flex-col ${featured ? "p-7" : "p-6"}`}>
+      <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span
@@ -91,23 +86,16 @@ export function ProjectCard({
           ))}
         </div>
 
-        <Heading
-          className={`mt-5 font-semibold tracking-tight text-foreground ${
-            featured ? "text-2xl md:text-3xl" : "text-lg"
-          }`}
-        >
+        <Heading className="mt-5 text-lg font-semibold tracking-tight text-foreground">
           {project.name}
         </Heading>
 
-        <p
-          className={`mt-2 font-light leading-relaxed text-muted-foreground ${
-            featured ? "max-w-md text-base" : "text-sm"
-          }`}
-        >
+        <p className="mt-2 text-sm font-light leading-relaxed text-muted-foreground">
           {project.caption}
         </p>
 
-        <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary">
+        {/* Pushed down so the link sits on the same line in every card. */}
+        <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary">
           Open project
           <span
             aria-hidden="true"

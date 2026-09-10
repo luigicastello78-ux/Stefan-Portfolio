@@ -8,9 +8,7 @@ import { isPlaceholderWork, projects } from "@/content/projects";
 /**
  * Selected work. PRD section 8.4.
  *
- * Three projects in browser chrome, asymmetric: the lead takes two columns,
- * the next two stack beside it. Three identical cards implied all three were
- * equally worth looking at, which is never true of a portfolio.
+ * Three projects in browser chrome, one size each, in an even three-up grid.
  *
  * The rest of the archive is listed underneath as bare domains, which is
  * both a real second route into /work and a continuation of the terminal
@@ -18,7 +16,6 @@ import { isPlaceholderWork, projects } from "@/content/projects";
  */
 export function FeaturedWork() {
   const shown = projects.slice(0, 3);
-  const [lead, ...rest] = shown;
   const archive = projects.slice(3);
 
   return (
@@ -61,19 +58,18 @@ export function FeaturedWork() {
         </Reveal>
       ) : null}
 
-      <div className="mt-12 grid gap-6 lg:grid-cols-3">
-        <Reveal className="lg:col-span-2">
-          <ProjectCard project={lead} featured index={0} />
-        </Reveal>
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
-          {rest.map((project, position) => (
-            <Reveal key={project.slug} delay={(position + 1) * 0.08}>
-              <ProjectCard project={project} index={position + 1} />
-            </Reveal>
-          ))}
-        </div>
-      </div>
+      <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {shown.map((project, position) => (
+          <Reveal
+            as="li"
+            key={project.slug}
+            delay={position * 0.08}
+            className="h-full"
+          >
+            <ProjectCard project={project} index={position} />
+          </Reveal>
+        ))}
+      </ul>
 
       {archive.length ? (
         <Reveal delay={0.1} className="mt-8 block">

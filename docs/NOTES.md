@@ -248,6 +248,12 @@ Each project gained a `domain`, shown in the address bar. It is placeholder
 data like the rest of `projects.ts` and has to be replaced with the real
 host before launch.
 
+Every card is one size, in an even three-up grid. An asymmetric version with
+a larger lead was tried and dropped at the owner's request. The grid
+stretches the cards to a common height and the footer link is pushed to the
+bottom of each, so an uneven caption cannot leave one card looking
+unfinished next to another.
+
 The section also carries a count, `03 / 06`, and lists the rest of the
 archive underneath as bare domains. That is a second real route into /work
 and a continuation of the terminal language rather than another button.
