@@ -17,6 +17,11 @@ import { siteConfig } from "@/config/site";
  * Hover is emphasis only. Every word is in the markup and visible before any
  * interaction, so nothing is hidden from keyboards, screen readers or search
  * engines.
+ *
+ * The list is pulled out by exactly the padding each row carries, so the
+ * text still lines up with the heading above while the hover band extends
+ * past it on both sides. The pull is always smaller than the container
+ * gutter, so it cannot cause horizontal overflow.
  */
 export function Services() {
   return (
@@ -30,7 +35,7 @@ export function Services() {
         lede="Five things, done properly. No packages, no price list. Every one of them starts with a call."
       />
 
-      <ol className="mt-16 border-t border-border">
+      <ol className="-mx-5 mt-16 border-t border-border md:-mx-7 lg:-mx-9">
         {services.map((service, index) => (
           <Reveal
             as="li"
@@ -40,12 +45,14 @@ export function Services() {
           >
             <Link
               href="/services"
-              className="group relative block overflow-hidden py-8 lg:py-10"
+              className="group relative block overflow-hidden rounded-lg px-5 py-8 md:px-7 lg:px-9 lg:py-10"
             >
-              {/* Wipes in from the left on hover. Transform only. */}
+              {/* Wipes in from the left on hover. Transform only.
+                  Inset zero, not negative: the row clips its own overflow,
+                  so anything outside the box was never drawn anyway. */}
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-y-0 -left-6 -right-6 origin-left scale-x-0 bg-gradient-to-r from-primary/[0.07] via-primary/[0.03] to-transparent transition-transform duration-500 ease-out group-hover:scale-x-100 md:-left-10 md:-right-10 lg:-left-16 lg:-right-16"
+                className="pointer-events-none absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-primary/[0.07] via-primary/[0.03] to-transparent transition-transform duration-500 ease-out group-hover:scale-x-100"
               />
 
               <div className="relative grid gap-5 lg:grid-cols-12 lg:items-baseline lg:gap-8">
