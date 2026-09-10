@@ -40,24 +40,6 @@ export const siteConfig = {
 } as const;
 
 /**
- * Hero backdrop.
- *
- * "spline" loads the 3D scene over the coded backdrop, deferred until the
- * browser is idle and stopped whenever the hero leaves the viewport.
- *
- * "coded" is the CSS-only backdrop on its own. It costs effectively nothing
- * because it animates transform and opacity only, and it is what everyone
- * on a phone or with reduced motion turned on receives either way.
- *
- * The scene below is still a third-party asset and has to be replaced with
- * an owned one before launch. PRD section 6.3.
- */
-export const heroBackdrop = {
-  provider: "spline" as "coded" | "spline",
-  splineScene: "https://prod.spline.design/Slk6b8kz3LRlKiyk/scene.splinecode",
-};
-
-/**
  * Embedded chat widget. PRD section 8.10, decision 7.
  *
  * Off until the owner has an account and an id. The loader defers the vendor

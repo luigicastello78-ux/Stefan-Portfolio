@@ -17,28 +17,13 @@ Replace with 5 to 8 real ones. Each needs a name, a live URL, a one-line
 caption and a cover image. Then set `isPlaceholderWork` to `false` and the
 warning banner disappears.
 
-### 2. The 3D scene
-The Spline hero is on, at your request, with the CSS backdrop underneath it
-and every safeguard I could add. The scene URL still points at somebody
-else's scene, which cannot ship.
-
-It also freezes the page for about eight seconds while it initialises, once,
-roughly a second after load. Steady state afterwards is fine. That cost is
-inside the Spline runtime parsing this scene and is not fixable from the
-application.
-
-Build your own scene, keep it light, put the URL in
-`heroBackdrop.splineScene`, and measure the initialisation the same way
-before you ship it. Setting `heroBackdrop.provider` to `"coded"` turns the
-3D off again in one line.
-
-### 3. Booking link
+### 2. Booking link
 `siteConfig.bookingUrl` falls back to the contact page. Every "book a call"
 control on the site points at it. Put your Cal.com or Calendly URL there and
 the contact page switches from an email-first layout to a booking-first one
 on its own.
 
-### 4. Contact form destination
+### 3. Contact form destination
 The form works, validates and rate limits, but has nowhere to deliver. Set
 either `CONTACT_WEBHOOK_URL` for n8n, or `RESEND_API_KEY` with
 `CONTACT_TO_EMAIL` and `CONTACT_FROM_EMAIL`. See `.env.example`.
@@ -47,7 +32,7 @@ Send one real test message after configuring. Until then the form refuses
 submissions and tells the sender to email instead, which is honest but not
 what you want live.
 
-### 5. Monogram
+### 4. Monogram
 `src/components/site/monogram.tsx` is still my approximation of your angular
 S mark, drawn from the images you sent. The file itself has never reached
 the repository. Drop the real SVG in and replace the path.

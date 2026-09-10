@@ -1,90 +1,125 @@
 import Link from "next/link";
 
+import { BuildPanel } from "@/components/site/build-panel";
 import { HeroBackdrop } from "@/components/site/hero-backdrop";
+import { ToolMarquee } from "@/components/site/tool-marquee";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 
 /**
- * Full viewport hero, content anchored bottom-left. PRD section 8.2.
+ * Hero. PRD section 8.2, rebuilt.
  *
- * The backdrop takes no pointer events, so the content column no longer has
- * to be transparent to clicks. That also makes the hero text selectable,
- * which it was not before.
+ * The previous version put the copy in the bottom-left corner over a 3D
+ * scene. The scene is gone, and with it the reason for the layout: a corner
+ * of text over decoration wastes two thirds of the first screen.
+ *
+ * Now it is a split. Copy on the left, a panel on the right that states the
+ * positioning as a sequence of steps rather than another paragraph, and a
+ * strip of tooling along the foot. Nothing here is a canvas: the whole
+ * screen is text, borders and gradients.
  *
  * Headline: PRD decision 5, option B, split across the eyebrow and the H1.
- * "From idea to deployed" carries the promise, "days, not weeks" carries the
- * display weight. Setting the full sentence at the reference display size
- * would run to five lines.
+ * The full sentence at display size runs to five lines.
  */
+
+/** Three facts under the buttons. Plain, checkable, no invented metrics. */
+const facts = [
+  { label: "Based", value: "Remote, working globally" },
+  { label: "Working with", value: "Founders and small teams" },
+  { label: "Status", value: "Available for new builds" },
+];
+
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen items-end overflow-hidden bg-hero-bg">
+    <section className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-hero-bg pt-24 lg:pt-32">
       <HeroBackdrop />
 
-      <div
-        className="pointer-events-none absolute inset-0 z-[1] bg-black/30"
-        aria-hidden="true"
-      />
-
-      <div className="site-container relative z-10 w-full pb-10 pt-32 md:pb-10">
-        <div className="max-w-[90%] sm:max-w-md lg:max-w-2xl">
-          <p
-            className="mb-4 animate-fade-up text-xs uppercase tracking-[0.3em] text-primary opacity-0"
-            style={{ animationDelay: "0.1s" }}
-          >
-            From idea to deployed
-          </p>
-
-          <h1
-            className="mb-2 animate-fade-up text-[clamp(3rem,8vw,6rem)] font-bold uppercase leading-[1.05] tracking-[-0.05em] text-foreground opacity-0 md:mb-4"
-            style={{ animationDelay: "0.2s" }}
-          >
-            In <span className="text-primary">days</span>, not weeks
-          </h1>
-
-          <p
-            className="mb-3 animate-fade-up text-[clamp(1.125rem,2.5vw,1.875rem)] font-light text-foreground/80 opacity-0 md:mb-6"
-            style={{ animationDelay: "0.4s" }}
-          >
-            Vibe-code developer. That means AI writes the first draft and I own
-            every line that ships.
-          </p>
-
-          <p
-            className="mb-4 animate-fade-up text-[clamp(0.875rem,1.5vw,1.25rem)] font-light text-muted-foreground opacity-0 md:mb-8"
-            style={{ animationDelay: "0.55s" }}
-          >
-            Websites, web apps and MVPs built with AI pair-programming and
-            reviewed line by line. Automation wired in so the thing keeps working
-            after launch.
-          </p>
-
-          <div
-            className="flex animate-fade-up flex-wrap gap-3 font-bold opacity-0"
-            style={{ animationDelay: "0.7s" }}
-          >
-            <Link
-              href={siteConfig.bookingUrl}
-              className={buttonVariants({ variant: "hero", size: "xl" })}
+      <div className="site-container relative z-10 w-full py-10 lg:py-16">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <p
+              className="animate-fade-up text-xs uppercase tracking-[0.3em] text-primary opacity-0"
+              style={{ animationDelay: "0.1s" }}
             >
-              Book a call
-            </Link>
-            <Link
-              href="/work"
-              className={buttonVariants({ variant: "heroOutline", size: "xl" })}
+              From idea to deployed
+            </p>
+
+            <h1
+              className="mt-5 animate-fade-up text-[clamp(2.75rem,7vw,5.5rem)] font-bold uppercase leading-[1.02] tracking-[-0.045em] text-foreground opacity-0"
+              style={{ animationDelay: "0.2s" }}
             >
-              See the work
-            </Link>
+              In <span className="text-primary">days</span>,
+              <br className="hidden sm:block" /> not weeks
+            </h1>
+
+            <p
+              className="mt-6 max-w-xl animate-fade-up text-[clamp(1.05rem,2vw,1.5rem)] font-light leading-snug text-foreground/80 opacity-0"
+              style={{ animationDelay: "0.35s" }}
+            >
+              Vibe-code developer. AI writes the first draft and I own every
+              line that ships.
+            </p>
+
+            <p
+              className="mt-5 max-w-lg animate-fade-up text-sm font-light leading-relaxed text-muted-foreground opacity-0 md:text-base"
+              style={{ animationDelay: "0.45s" }}
+            >
+              Websites, web apps and MVPs, reviewed line by line, with the
+              automation wired in so the thing keeps working after launch.
+            </p>
+
+            <div
+              className="mt-9 flex animate-fade-up flex-wrap gap-3 font-bold opacity-0"
+              style={{ animationDelay: "0.6s" }}
+            >
+              <Link
+                href={siteConfig.bookingUrl}
+                className={buttonVariants({ variant: "hero", size: "xl" })}
+              >
+                Book a call
+              </Link>
+              <Link
+                href="/work"
+                className={cn(
+                  buttonVariants({ variant: "heroOutline", size: "xl" })
+                )}
+              >
+                See the work
+              </Link>
+            </div>
+
+            <dl
+              className="mt-10 grid animate-fade-up grid-cols-2 gap-5 border-t border-border/70 pt-7 opacity-0 sm:grid-cols-3 lg:mt-12 lg:gap-6 lg:pt-8"
+              style={{ animationDelay: "0.75s" }}
+            >
+              {facts.map((fact) => (
+                <div key={fact.label}>
+                  <dt className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground/70">
+                    {fact.label}
+                  </dt>
+                  <dd className="mt-2 text-sm text-foreground/85">
+                    {fact.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          <p
-            className="mt-4 animate-fade-up text-xs font-light text-muted-foreground/60 opacity-0 md:mt-6"
-            style={{ animationDelay: "0.85s" }}
+          <div
+            className="animate-fade-up opacity-0 lg:col-span-5"
+            style={{ animationDelay: "0.45s" }}
           >
-            Stefan Stankovski. Available for new builds. Remote, working
-            globally.
-          </p>
+            <BuildPanel />
+          </div>
         </div>
+      </div>
+
+      <div
+        className="relative z-10 mt-auto animate-fade-in opacity-0"
+        style={{ animationDelay: "0.95s" }}
+      >
+        <ToolMarquee />
       </div>
     </section>
   );

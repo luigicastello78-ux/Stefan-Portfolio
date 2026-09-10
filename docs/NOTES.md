@@ -12,7 +12,7 @@ build time and the production build fails with six module-not-found errors.
 The version is pinned exactly, not caret-ranged. Do not widen it without
 rebuilding and confirming `npm run build` still passes.
 
-## The hero backdrop is Spline over CSS
+## The hero backdrop was Spline, and is not any more
 
 The placeholder Spline scene was measured in a production build on this
 machine. It loaded a WebGL runtime, produced individual frames as long as
@@ -198,3 +198,36 @@ availability pill and a static glow. Centred copy on a full-bleed section
 had nothing holding it.
 
 None of this changed the content model. The same data files drive all of it.
+
+## The hero, rebuilt without 3D
+
+The scene is gone at the owner's request, and both Spline packages are
+uninstalled. Homepage JavaScript went from 704 KB to 150 KB. The
+eight-second initialisation freeze and the third-party asset blocker went
+with it.
+
+Removing the scene removed the reason for the old layout. A corner of text
+in the bottom left only made sense as a caption on a picture; with no
+picture it wasted two thirds of the first screen.
+
+The hero is now a split:
+
+- Copy on the left. Eyebrow, headline, positioning line, description, two
+  calls to action, then three plain facts.
+- A panel on the right stating the positioning as a sequence of commands
+  rather than another paragraph. This is what PRD section 5.1 asked for when
+  it said terminal and prompt elements.
+- A strip of tooling along the foot, looping, paused on hover and stopped
+  under reduced motion.
+
+The panel lines are real text, not ASCII art, so a screen reader gets a
+coherent list. The markers are hidden from assistive technology, because
+"dollar sign, arrow, arrow" helps nobody.
+
+Nothing in the panel is a measured result. Invented numbers in a hero are
+the fastest way to lose a technical reader, so it says who does each part of
+the work instead.
+
+The backdrop is `hero-backdrop.tsx`: two drifting gradients, a panning grid,
+scan lines and a vignette. Transform and opacity only. It is a server
+component now, since nothing in it needs the client.

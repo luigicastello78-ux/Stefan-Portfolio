@@ -79,6 +79,17 @@ const config: Config = {
           "0%": { transform: "translate3d(0, 0, 0)" },
           "100%": { transform: "translate3d(0, 64px, 0)" },
         },
+        // The track holds two identical copies, so shifting by half its
+        // width loops seamlessly.
+        marquee: {
+          "0%": { transform: "translate3d(0, 0, 0)" },
+          "100%": { transform: "translate3d(-50%, 0, 0)" },
+        },
+        "caret-blink": {
+          "0%, 45%": { opacity: "1" },
+          "50%, 95%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards",
@@ -86,6 +97,8 @@ const config: Config = {
         "drift-a": "drift-a 28s ease-in-out infinite",
         "drift-b": "drift-b 36s ease-in-out infinite",
         "grid-pan": "grid-pan 16s linear infinite",
+        marquee: "marquee 42s linear infinite",
+        "caret-blink": "caret-blink 1.2s steps(1) infinite",
       },
     },
   },
