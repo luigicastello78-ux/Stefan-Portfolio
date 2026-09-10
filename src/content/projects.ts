@@ -13,6 +13,8 @@ export type Project = {
   caption: string;
   tags: string[];
   href: string;
+  /** Shown in the card's address bar. Host only, no scheme. */
+  domain: string;
   /** Placeholder gradient stand-in until real screenshots arrive. */
   tone: string;
 };
@@ -22,6 +24,7 @@ export const isPlaceholderWork = true;
 export const projects: Project[] = [
   {
     slug: "placeholder-one",
+    domain: "northwindstudio.com",
     name: "Northwind Studio",
     caption: "Marketing site for a design studio, built and live in four days.",
     tags: ["Next.js", "Landing page"],
@@ -30,6 +33,7 @@ export const projects: Project[] = [
   },
   {
     slug: "placeholder-two",
+    domain: "cadence.app",
     name: "Cadence",
     caption: "Booking MVP with payments, from empty repo to first customer.",
     tags: ["MVP", "Payments"],
@@ -38,6 +42,7 @@ export const projects: Project[] = [
   },
   {
     slug: "placeholder-three",
+    domain: "relayops.io",
     name: "Relay Ops",
     caption: "Lead routing automation replacing a manual inbox process.",
     tags: ["n8n", "Automation"],
@@ -46,6 +51,7 @@ export const projects: Project[] = [
   },
   {
     slug: "placeholder-four",
+    domain: "harborlabs.co",
     name: "Harbor Labs",
     caption: "Product site rebuilt for speed, from a slow legacy template.",
     tags: ["Redesign", "Performance"],
@@ -54,6 +60,7 @@ export const projects: Project[] = [
   },
   {
     slug: "placeholder-five",
+    domain: "fieldnote.team",
     name: "Fieldnote",
     caption: "Internal dashboard for a small team, shipped in a week.",
     tags: ["Dashboard", "Internal tool"],
@@ -62,6 +69,7 @@ export const projects: Project[] = [
   },
   {
     slug: "placeholder-six",
+    domain: "meridian.dev",
     name: "Meridian",
     caption: "Content system and technical SEO rebuild for a B2B site.",
     tags: ["SEO", "Content"],

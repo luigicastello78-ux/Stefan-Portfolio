@@ -231,3 +231,23 @@ the work instead.
 The backdrop is `hero-backdrop.tsx`: two drifting gradients, a panning grid,
 scan lines and a vignette. Transform and opacity only. It is a server
 component now, since nothing in it needs the client.
+
+## Work section: browser chrome
+
+The hero states the work as a terminal window, so the work states itself as
+a browser window. Same motif twice, and it is literal rather than
+decorative: these are websites, and a site in a browser frame reads as a
+site rather than as a rectangle of colour.
+
+The frame also does real work for the placeholders. A gradient inside a
+browser window reads as a screenshot that has not loaded. The same gradient
+on a bare card just reads as a coloured box. When real screenshots arrive
+they drop into the viewport area and nothing else changes.
+
+Each project gained a `domain`, shown in the address bar. It is placeholder
+data like the rest of `projects.ts` and has to be replaced with the real
+host before launch.
+
+The section also carries a count, `03 / 06`, and lists the rest of the
+archive underneath as bare domains. That is a second real route into /work
+and a continuation of the terminal language rather than another button.
