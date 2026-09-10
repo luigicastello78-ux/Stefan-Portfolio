@@ -107,6 +107,40 @@
 }
 
 /*
+  Process timeline rail.
+
+  The vertical line draws itself as the section scrolls through the viewport,
+  using a scroll-driven animation. Browsers without `animation-timeline` get
+  a full-height line and lose nothing, and the whole rule is skipped for
+  anyone who has asked for less motion, which leaves the line drawn.
+
+  Progress is not decorative in a way that matters, so there is no fallback
+  script. A line that does not animate is still a line.
+*/
+@keyframes timeline-draw {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@layer components {
+  .timeline-rail {
+    transform-origin: top;
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .timeline-rail {
+        transform: scaleY(0);
+        animation: timeline-draw linear both;
+        animation-timeline: view();
+        animation-range: entry 25% cover 55%;
+      }
+    }
+  }
+}
+
+/*
   Reduced motion guard. PRD section 6.5.
   Entrance animation is removed entirely rather than shortened, so nothing
   can be left stuck at opacity 0 for anyone who opts out.

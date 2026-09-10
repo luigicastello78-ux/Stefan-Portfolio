@@ -165,3 +165,36 @@ longer needs `pointer-events: none`, so the headline is selectable, and
 The scene load failure is now logged rather than swallowed. A silent catch
 in the first version of this component hid a real failure and cost real
 time.
+
+## Homepage section layouts
+
+The first pass built every section as a card grid, which is the default
+shape and the reason the page read as competent rather than considered.
+Five sections were rebuilt around what each one is actually doing.
+
+**Services** are editorial rows, not cards. A grid gives six items equal
+weight and equal size; as full-width rows the titles carry display weight,
+the eye runs down one column, and the hover state has somewhere to go. The
+green wipe is a scaled pseudo-element, so it is transform only. Every word
+is in the markup before any interaction, so hover is emphasis and never
+disclosure.
+
+**Work** is asymmetric. The lead project takes two columns and a wider
+cover, the next two stack beside it. Three identical cards implied all three
+were equally worth looking at, which is never true of a portfolio.
+
+**Process** has a spine. It is a sequence and the old layout did not say so.
+The rail draws itself as the section scrolls, through `animation-timeline:
+view()`. Browsers without it get a full line and lose nothing, and the rule
+is skipped entirely under reduced motion, which also leaves the line drawn.
+No script, no fallback library.
+
+**Quality** is assumption against reality. The objection is already in the
+reader's head, so naming it and striking it through is more persuasive than
+three columns of prose talking around it.
+
+**Closing call to action** is a framed panel, left aligned, with an
+availability pill and a static glow. Centred copy on a full-bleed section
+had nothing holding it.
+
+None of this changed the content model. The same data files drive all of it.

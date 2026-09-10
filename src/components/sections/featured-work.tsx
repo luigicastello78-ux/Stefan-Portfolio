@@ -9,9 +9,13 @@ import { isPlaceholderWork, projects } from "@/content/projects";
  * Visual cards with a one-line caption each. PRD section 8.4.
  * No long-form case studies. The cover images are gradient stand-ins until
  * real screenshots arrive.
+ *
+ * Asymmetric on large screens: the first project takes two columns and the
+ * next two stack beside it. Three identical cards implied the three were
+ * equally worth looking at, which is never true of a portfolio.
  */
 export function FeaturedWork() {
-  const featured = projects.slice(0, 3);
+  const [lead, ...rest] = projects.slice(0, 3);
 
   return (
     <section
@@ -27,27 +31,38 @@ export function FeaturedWork() {
         <Reveal delay={0.2}>
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 text-sm font-medium text-foreground transition-opacity hover:opacity-70"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
           >
             All work
-            <span aria-hidden="true">&rarr;</span>
+            <span
+              aria-hidden="true"
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            >
+              &rarr;
+            </span>
           </Link>
         </Reveal>
       </div>
 
       {isPlaceholderWork ? (
-        <Reveal className="mt-10">
+        <Reveal className="mt-10 block">
           <PlaceholderNotice />
         </Reveal>
       ) : null}
 
-      <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {featured.map((project, index) => (
-          <Reveal as="li" key={project.slug} delay={index * 0.08}>
-            <ProjectCard project={project} />
-          </Reveal>
-        ))}
-      </ul>
+      <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <Reveal className="lg:col-span-2">
+          <ProjectCard project={lead} featured />
+        </Reveal>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
+          {rest.map((project, index) => (
+            <Reveal key={project.slug} delay={(index + 1) * 0.08}>
+              <ProjectCard project={project} />
+            </Reveal>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
