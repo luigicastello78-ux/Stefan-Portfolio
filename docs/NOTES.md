@@ -276,3 +276,23 @@ the longer prose lives on the page.
 The scroll-drawn `.timeline-rail` rule went with the old timeline. Grids
 across the work and stage sections use `auto-rows-fr`, so every card matches
 every other card, not just the ones beside it in the same row.
+
+## FAQ: a rail and an accordion
+
+The old version was a narrow column with the right half of the section
+empty. That is the one place on the page where somebody is actively looking
+for a reason to get in touch, so the empty half now carries that reason: a
+rail with the heading, the count, the link to the blog, and a small panel
+offering a call.
+
+The rail sticks from the large breakpoint upward and is static below, which
+is plain `position: sticky` and no script.
+
+The accordion is still native disclosure elements. Every answer sits in the
+markup whether or not it is open, which is what crawlers read and what the
+`FAQPage` structured data has to match. That match is now checked: the
+rendered questions and the schema questions are compared in the same order.
+
+`name="faq"` makes the group exclusive, so opening one closes the last.
+Browsers without support allow several open at once, which is fine. The
+first item ships open so the interaction is visible without a click.
