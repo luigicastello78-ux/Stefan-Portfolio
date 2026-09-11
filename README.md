@@ -53,6 +53,17 @@ modals so they do not sit on top of the hero, and writes WebP at the card's
 aspect ratio. Nothing is accepted or rejected on a consent banner: the
 elements are hidden, not answered.
 
+If a card comes out mostly empty, the site probably centres its hero in a
+full-height section. Shoot a narrower viewport at a higher pixel ratio so
+the content fills more of the frame:
+
+```bash
+npm run capture -- https://example.com public/work/example.webp 1000 625 0 1.6
+```
+
+That lands on exactly 1600 by 1000. The arguments are width, height, pixels
+to trim off the top, and pixel ratio.
+
 ## Layout
 
 ```

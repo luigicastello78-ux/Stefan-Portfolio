@@ -1,9 +1,14 @@
 /**
  * Capture a project screenshot for the work section.
  *
- *   node scripts/capture.mjs <url> <public/work/name.webp> [width] [height]
+ *   node scripts/capture.mjs <url> <out.webp> [width] [height] [offsetY] [scale]
  *
  * Defaults to 1600 by 1000, which is the 16:10 the cards crop to.
+ *
+ * `offsetY` shoots that much taller and then keeps the lower part of the
+ * frame. Use it on sites whose hero is centred in the viewport and leaves a
+ * wide empty band above the content. The result is still 16:10, taken at
+ * full resolution, so nothing is upscaled.
  *
  * Two things it handles that a plain `chrome --screenshot` does not:
  *
@@ -40,17 +45,25 @@ const OVERLAY_HINTS = [
   "newsletter",
 ];
 
-const [, , url, out, rawWidth, rawHeight] = process.argv;
+const [, , url, out, rawWidth, rawHeight, rawOffsetY, rawScale] = process.argv;
 
 if (!url || !out) {
   console.error(
-    "usage: node scripts/capture.mjs <url> <public/work/name.webp> [width] [height]"
+    "usage: node scripts/capture.mjs <url> <out.webp> [width] [height] [offsetY]"
   );
   process.exit(1);
 }
 
 const width = Number(rawWidth) || 1600;
 const height = Number(rawHeight) || 1000;
+const offsetY = Number(rawOffsetY) || 0;
+/**
+ * Device pixel ratio. Shooting a narrower viewport at scale 2 makes the
+ * hero content fill more of the frame, because headline sizes do not shrink
+ * in step with the viewport. Useful on sites whose hero leaves a wide empty
+ * band at 1600 wide.
+ */
+const scale = Number(rawScale) || 1;
 
 const executablePath = CHROME_CANDIDATES.find((candidate) =>
   existsSync(candidate)
@@ -65,7 +78,11 @@ const browser = await puppeteer.launch({
   executablePath,
   headless: true,
   args: ["--hide-scrollbars", "--disable-gpu", "--no-sandbox"],
-  defaultViewport: { width, height, deviceScaleFactor: 1 },
+  defaultViewport: {
+    width,
+    height: height + offsetY,
+    deviceScaleFactor: scale,
+  },
 });
 
 try {
@@ -112,10 +129,18 @@ try {
 
   await new Promise((resolve) => setTimeout(resolve, 600));
 
-  const buffer = await page.screenshot({ type: "webp", quality: 86 });
+  const buffer = await page.screenshot({
+    type: "webp",
+    quality: 86,
+    clip: { x: 0, y: offsetY, width, height },
+  });
   writeFileSync(out, buffer);
 
-  console.log(`${out} — ${width}x${height}, ${hidden} overlay(s) hidden`);
+  console.log(
+    `${out} — ${width}x${height}` +
+      (offsetY ? `, ${offsetY}px trimmed off the top` : "") +
+      `, ${hidden} overlay(s) hidden`
+  );
 } finally {
   await browser.close();
 }

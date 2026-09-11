@@ -371,6 +371,19 @@ the cookie bars. That fails on two of the three: Splice and Sequence Minds
 centre their hero vertically, so a taller viewport pushed the headline below
 the crop. Hiding the overlay is the version that works everywhere.
 
+Splice needed one more thing. Its hero is a full-bleed photograph with the
+copy centred, so at 1600 wide the top third of a 16:10 frame is empty sky
+and the headline lands small in a card. Shooting a narrower viewport at a
+higher device pixel ratio fixes it: the type does not shrink in step with
+the viewport, so the content fills more of the frame.
+
+```bash
+npm run capture -- https://example.com out.webp 1000 625 0 1.6
+```
+
+1000 by 625 at 1.6 lands on exactly 1600 by 1000, so nothing is resized
+afterwards. Try it on any site whose card looks mostly empty.
+
 Sticky headers are deliberately left alone. The rule is position fixed or
 sticky, not at the top of the page, and carrying an overlay-ish word in its
 id or class.
