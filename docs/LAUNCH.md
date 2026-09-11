@@ -8,17 +8,17 @@ use something that is not yours.
 
 ## Hard blockers
 
-### 1. Project screenshots
-The three real projects are in. What is still stand-in is their cover art:
-`public/work/*.png` are brand-keyed plates reading "awaiting screenshot",
-not screenshots.
+### 1. Confirm the project details
+The three projects and their screenshots are in. Two things to check in
+`content/projects`:
 
-Overwrite each file, keeping the same filename, at 1600 by 1000 or any other
-16:10 size. No code changes needed.
+- Two entries are tagged "Sveltia CMS". That is the real product's
+  spelling; the brief said "svetliacms". Correct it if something else was
+  meant.
+- The captions are mine, written from the screenshots. Read them.
 
-Confirm one thing in `src/content/projects.ts`: two projects are tagged
-"Sveltia CMS". That is the spelling of the real product; the brief said
-"svetliacms". Correct it if a different tool was meant.
+Screenshots were captured from the live sites at 1600 by 1000. Replacing one
+is a file swap or an upload through /admin.
 
 ### 2. Booking link
 `siteConfig.bookingUrl` falls back to the contact page. Every "book a call"

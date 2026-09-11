@@ -2,8 +2,12 @@
   "name": "Splice Property Solutions",
   "domain": "www.splicepropertysolutions.co.uk",
   "caption": "Relocation, investment and property specialist working in Cyprus.",
-  "tags": ["Next.js", "Sveltia CMS", "Vercel"],
-  "image": "/work/splicepropertysolutions.png",
+  "tags": [
+    "Next.js",
+    "Sveltia CMS",
+    "Vercel"
+  ],
+  "image": "/work/splicepropertysolutions.webp",
   "order": 3,
   "featured": true
 }

@@ -2,8 +2,12 @@
   "name": "South Africa SDR",
   "domain": "www.southafricasdr.com",
   "caption": "Offshore sales development service placing outbound reps with Western teams.",
-  "tags": ["Next.js", "Sveltia CMS", "Vercel"],
-  "image": "/work/southafricasdr.png",
+  "tags": [
+    "Next.js",
+    "Sveltia CMS",
+    "Vercel"
+  ],
+  "image": "/work/southafricasdr.webp",
   "order": 2,
   "featured": true
 }

@@ -343,3 +343,29 @@ verbatim and does not resolve directory indexes, so without it only
 Signing in is a GitHub personal access token for one person, the local
 repository option in a Chromium browser for editing on this machine, or a
 deployed OAuth client for a shared login. The README has the detail.
+
+## Project screenshots are captured, not hand-made
+
+`public/work/*.webp` are real captures of the live sites, taken with the
+installed Chrome in headless mode at 1600 wide and cropped to 1600 by 1000.
+
+Two things made a naive capture useless:
+
+- Sequence Minds opens a modal a few seconds in, which greys out the hero.
+  A five second virtual time budget renders the page fully and still beats
+  it.
+- All three carry cookie bars pinned to the bottom of the viewport. Shooting
+  a taller viewport and cropping the top 1000px drops them off the frame.
+
+The taller viewport has a limit. Splice and Sequence Minds centre their hero
+vertically, so at 1400 tall the headline slid below the crop. They are shot
+at 1120 and South Africa SDR, whose cookie bar is deeper, at 1400.
+
+The command, for reference:
+
+```
+chrome --headless=new --hide-scrollbars --window-size=1600,1120   --virtual-time-budget=5000 --screenshot=out.png https://example.com
+```
+
+WebP at quality 86 keeps each file under 150KB. next/image re-encodes on
+request anyway, so the source format only affects the repository.
