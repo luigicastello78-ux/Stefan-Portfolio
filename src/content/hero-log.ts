@@ -51,9 +51,14 @@ export const heroLog: LogLine[] = [
 /**
  * The ticker along the foot of the hero.
  *
- * Grouped rather than a flat list, because a run of twelve names says
- * nothing about how they fit together. The groups are the same four the
- * about page uses, so the site tells one story about the stack.
+ * Grouped rather than a flat list, because a run of names says nothing about
+ * how they fit together.
+ *
+ * The no-code group is here at the owner's request and is the one place on
+ * the site that names Webflow, WordPress or Shopify. PRD decision 16 dropped
+ * Webflow positioning everywhere else, and the about page tool list still
+ * leaves those platforms out. If that page should match this strip, add a
+ * fifth group to src/content/tools.ts.
  */
 export type ToolGroup = {
   label: string;
@@ -66,6 +71,7 @@ export const heroMarquee: ToolGroup[] = [
     label: "code",
     items: ["Next.js", "TypeScript", "React", "Tailwind", "Python", "Django"],
   },
+  { label: "no-code", items: ["Webflow", "WordPress", "Shopify"] },
   { label: "automation", items: ["n8n", "APIs", "Webhooks"] },
   { label: "deploy", items: ["Vercel", "GitHub", "Cloudflare"] },
 ];

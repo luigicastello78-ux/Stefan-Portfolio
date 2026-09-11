@@ -308,8 +308,11 @@ as a ticker with a masthead rather than as text that happens to be moving.
 Both edges fade, so chips neither hard-cut against the rule nor vanish
 abruptly on the way out.
 
-The groups are the same four the about page uses, so the site tells one
-story about the stack instead of two.
+A fifth group, no-code, was added later at the owner's request: Webflow,
+WordPress and Shopify. That strip is now the only place on the site naming
+those platforms. PRD decision 16 dropped Webflow positioning everywhere
+else, and `src/content/tools.ts`, which drives the about page, still leaves
+them out. Add a fifth group there if the two should agree.
 
 The track got much longer, so the duration went from 42s to 64s. Translating
 a wider track over the same time means it moves faster, which is easy to
