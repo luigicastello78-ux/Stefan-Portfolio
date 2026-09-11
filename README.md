@@ -61,8 +61,15 @@ the content fills more of the frame:
 npm run capture -- https://example.com public/work/example.webp 1000 625 0 1.6
 ```
 
-That lands on exactly 1600 by 1000. The arguments are width, height, pixels
-to trim off the top, and pixel ratio.
+Width times pixel ratio has to come to 1600. Go too narrow and the hero
+stops fitting the viewport, which clips the top of it.
+
+After replacing any screenshot, clear the image cache or the old one keeps
+being served:
+
+```bash
+rm -rf .next/cache/images
+```
 
 ## Layout
 

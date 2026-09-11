@@ -381,8 +381,27 @@ the viewport, so the content fills more of the frame.
 npm run capture -- https://example.com out.webp 1000 625 0 1.6
 ```
 
-1000 by 625 at 1.6 lands on exactly 1600 by 1000, so nothing is resized
-afterwards. Try it on any site whose card looks mostly empty.
+Width and pixel ratio have to multiply to 1600. Splice ended up at 1200 by
+750 at 1.3333. At 1000 wide its hero content grew taller than the viewport
+and the eyebrow line above the headline was clipped off the top, which is
+the failure mode to watch for: too narrow and the hero stops fitting.
+
+## Replacing a screenshot needs the image cache cleared
+
+Next caches optimised images under `.next/cache/images`, keyed by the source
+path. Overwrite a file in `public/work` and the old crop keeps being served
+from that cache, so the card looks unchanged, or worse, looks cropped
+against the new source.
+
+After replacing any image:
+
+```bash
+rm -rf .next/cache/images
+npm run build
+```
+
+Then hard-reload the browser, because it has its own copy. This cost a round
+trip: the file on disk was right and the page was serving the previous one.
 
 Sticky headers are deliberately left alone. The rule is position fixed or
 sticky, not at the top of the page, and carrying an overlay-ish word in its
