@@ -1,0 +1,95 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+# Sveltia CMS. Edits here become commits on the repository, and a commit to
+# main triggers a deploy, so publishing a project is one form and a wait.
+#
+# Signing in:
+#   Simplest, for one person, is a GitHub personal access token. Open
+#   /admin, choose the token option and paste a fine-grained token with
+#   read and write access to Contents on this repository only.
+#
+#   For a shared login instead, deploy the Sveltia CMS Authenticator to
+#   Cloudflare Workers and add `base_url: <your authenticator URL>` under
+#   backend below.
+#
+# Editing locally:
+#   Serve the site, open /admin in Chrome or Edge, and pick the local
+#   repository option. It writes straight to the working tree through the
+#   File System Access API. No proxy server, and Firefox and Safari cannot
+#   do it.
+
+backend:
+  name: github
+  repo: luigicastello78-ux/Stefan-Portfolio
+  branch: main
+  commit_messages:
+    create: 'content: add {{collection}} "{{slug}}"'
+    update: 'content: update {{collection}} "{{slug}}"'
+    delete: 'content: delete {{collection}} "{{slug}}"'
+    uploadMedia: 'content: upload "{{path}}"'
+    deleteMedia: 'content: delete "{{path}}"'
+
+# Screenshots land next to the ones already committed.
+media_folder: /public/work
+public_folder: /work
+
+collections:
+  - name: projects
+    label: Projects
+    label_singular: Project
+    description: >-
+      Everything in Selected work. The three featured ones lead the
+      homepage, and all of them appear on the work page.
+    folder: /content/projects
+    create: true
+    extension: json
+    format: json
+    slug: '{{slug}}'
+    summary: '{{name}} · {{domain}}'
+    sortable_fields: [order, name]
+    fields:
+      - label: Name
+        name: name
+        widget: string
+        hint: Shown under the screenshot. The client or product name.
+
+      - label: Address
+        name: domain
+        widget: string
+        hint: >-
+          Host only, no https:// and no trailing slash. It is shown in the
+          card's address bar as plain text and is never a link.
+        pattern: ['^[a-z0-9.-]+\.[a-z]{2,}(\.[a-z]{2,})?$', 'Host only, for example www.example.com']
+
+      - label: Caption
+        name: caption
+        widget: text
+        hint: One sentence saying what the site is for. No build times, no metrics.
+
+      - label: Stack
+        name: tags
+        widget: list
+        min: 1
+        max: 4
+        hint: Two or three reads best. Any more and the card gets noisy.
+        field: { label: Tool, name: tool, widget: string }
+
+      - label: Screenshot
+        name: image
+        widget: image
+        hint: >-
+          16:10, ideally 1600 by 1000. The top of the page works best,
+          because the card crops from the top.
+
+      - label: Order
+        name: order
+        widget: number
+        value_type: int
+        default: 100
+        hint: Lowest first.
+
+      - label: Feature on the homepage
+        name: featured
+        widget: boolean
+        default: true
+        hint: Off keeps the project on the work page only.

@@ -13,6 +13,14 @@ const nextConfig: NextConfig = {
   async redirects() {
     return legacyRedirects;
   },
+  async rewrites() {
+    // Next serves files in /public verbatim and does not resolve directory
+    // indexes, so /admin would 404 and only /admin/index.html would work.
+    return [
+      { source: "/admin", destination: "/admin/index.html" },
+      { source: "/admin/", destination: "/admin/index.html" },
+    ];
+  },
 };
 
 // No remark or rehype plugins. Frontmatter lives in an exported `meta`

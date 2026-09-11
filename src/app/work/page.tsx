@@ -3,9 +3,9 @@ import Link from "next/link";
 
 import { PageHeader } from "@/components/site/page-header";
 import { Reveal } from "@/components/site/reveal";
-import { PlaceholderNotice, ProjectCard } from "@/components/site/project-card";
+import { ProjectCard } from "@/components/site/project-card";
 import { buttonVariants } from "@/components/ui/button";
-import { isPlaceholderWork, projects } from "@/content/projects";
+import { projects } from "@/content/projects";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -25,11 +25,6 @@ export default function WorkPage() {
       />
 
       <section className="site-container bg-background py-20 lg:py-28">
-        {isPlaceholderWork ? (
-          <Reveal className="mb-12 block">
-            <PlaceholderNotice />
-          </Reveal>
-        ) : null}
 
         <ul className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (

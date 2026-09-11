@@ -97,16 +97,3 @@ export function ProjectCard({
     </article>
   );
 }
-
-/** Shown only while the grid still holds invented data. */
-export function PlaceholderNotice() {
-  return (
-    <p className="inline-flex items-center gap-2 rounded-md border border-destructive/40 bg-destructive/10 px-4 py-2 text-xs text-foreground/80">
-      <span
-        className="inline-block h-1.5 w-1.5 rounded-full bg-destructive"
-        aria-hidden="true"
-      />
-      Placeholder projects. Not real work. Replace before launch.
-    </p>
-  );
-}

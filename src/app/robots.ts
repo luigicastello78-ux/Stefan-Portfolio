@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
       // Nothing here is secret. It is just not a page worth indexing.
-      disallow: ["/api/"],
+      disallow: ["/api/", "/admin"],
     },
     sitemap: `${siteConfig.url}/sitemap.xml`,
   };

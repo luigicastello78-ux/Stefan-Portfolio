@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stefan-Portfolio
 
-## Getting Started
+stefanstankovski.com. Next.js on Vercel, dark only, content for the work
+section managed through Sveltia CMS.
 
-First, run the development server:
+## Running it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Other scripts: `npm run build`, `npm start`, `npm run lint`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The playground is a separate application with its own dependencies:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install --prefix playground
+npm run dev --prefix playground
+```
 
-## Learn More
+## Adding a project
 
-To learn more about Next.js, take a look at the following resources:
+Open `/admin` and use the Projects collection. Adding work is a form, not a
+code change.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Signing in, pick one:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Access token.** Simplest for one person. Create a fine-grained GitHub
+  token with read and write access to Contents on this repository, then
+  choose "Sign In Using Access Token".
+- **Local repository.** Run the site, open `/admin` in Chrome or Edge, and
+  choose "Work with Local Repository". It writes straight to the working
+  tree. Firefox and Safari cannot do this.
+- **GitHub sign-in.** Needs an OAuth client. Deploy the Sveltia CMS
+  Authenticator to Cloudflare Workers and add `base_url` under `backend` in
+  `public/admin/config.yml`.
 
-## Deploy on Vercel
+Each project is one JSON file in `content/projects`, and screenshots go in
+`public/work`. Editing those files by hand works exactly the same.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Screenshots want 16:10, ideally 1600 by 1000. Cards crop from the top, so
+the top of the page is what shows.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Layout
+
+```
+content/projects/     Work entries, written by the CMS
+public/admin/         Sveltia CMS: index.html and config.yml
+public/work/          Project screenshots
+src/app/              Routes, metadata, sitemap, robots, share cards
+src/components/       Sections and shared pieces
+src/config/site.ts    Name, email, booking URL, chat widget, keywords
+src/content/          Posts, services, process, FAQ, project loader
+docs/                 PRD, build plan, launch checklist, engineering notes
+playground/           Separate Vite app for experiments
+```
+
+## Before it goes live
+
+`docs/LAUNCH.md` is the checklist. The short version: real screenshots, a
+booking URL, a contact form destination, and the real logo SVG.
+
+## Environment
+
+The contact form needs a destination. Copy `.env.example` to `.env.local`
+and set either `CONTACT_WEBHOOK_URL`, or `RESEND_API_KEY` with
+`CONTACT_TO_EMAIL` and `CONTACT_FROM_EMAIL`. Without one the form refuses
+submissions and says so rather than pretending to have sent them.

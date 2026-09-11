@@ -2,8 +2,8 @@ import Link from "next/link";
 
 import { Reveal } from "@/components/site/reveal";
 import { SectionHeading } from "@/components/site/section-heading";
-import { PlaceholderNotice, ProjectCard } from "@/components/site/project-card";
-import { isPlaceholderWork, projects } from "@/content/projects";
+import { ProjectCard } from "@/components/site/project-card";
+import { featuredProjects, projects } from "@/content/projects";
 
 /**
  * Selected work. PRD section 8.4.
@@ -15,7 +15,7 @@ import { isPlaceholderWork, projects } from "@/content/projects";
  * language the hero sets up.
  */
 export function FeaturedWork() {
-  const shown = projects.slice(0, 3);
+  const shown = featuredProjects.slice(0, 3);
   const archive = projects.slice(3);
 
   return (
@@ -55,11 +55,6 @@ export function FeaturedWork() {
         </Reveal>
       </div>
 
-      {isPlaceholderWork ? (
-        <Reveal className="mt-10 block">
-          <PlaceholderNotice />
-        </Reveal>
-      ) : null}
 
       <ul className="mt-12 grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {shown.map((project, position) => (

@@ -1,0 +1,9 @@
+{
+  "name": "Sequence Minds",
+  "domain": "www.sequenceminds.com",
+  "caption": "Outbound lead generation agency, aimed at manufacturing and B2B teams.",
+  "tags": ["Next.js", "React", "Vercel"],
+  "image": "/work/sequenceminds.png",
+  "order": 1,
+  "featured": true
+}

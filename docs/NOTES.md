@@ -317,3 +317,29 @@ them out. Add a fifth group there if the two should agree.
 The track got much longer, so the duration went from 42s to 64s. Translating
 a wider track over the same time means it moves faster, which is easy to
 forget when adding content to a marquee.
+
+## Work is managed through Sveltia CMS
+
+Projects live in `content/projects/*.json`, one file each, and
+`src/content/projects.ts` reads the directory at build. Adding work is a
+form at `/admin`, not a code change.
+
+The loader drops any record missing a name, domain or image, with a warning
+in the build log. A CMS can save a half-filled entry, and a missing image
+renders as a hole in the page.
+
+`featured` decides what leads the homepage. Everything shows on /work.
+`order` sorts, ascending, with the name as the tie-break.
+
+Two mistakes the Sveltia docs single out, both avoided in
+`public/admin/index.html`: it needs no stylesheet link, because the styles
+are inside the bundle, and no `type="module"`, because the bundle is not an
+ES module. Agents add both by confusing it with Static CMS.
+
+`/admin` needs a rewrite in `next.config.ts`. Next serves `/public`
+verbatim and does not resolve directory indexes, so without it only
+`/admin/index.html` would work.
+
+Signing in is a GitHub personal access token for one person, the local
+repository option in a Chromium browser for editing on this machine, or a
+deployed OAuth client for a shared login. The README has the detail.
