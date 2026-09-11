@@ -48,7 +48,7 @@ export function HowWeWork() {
         </div>
       </Reveal>
 
-      <ol className="mt-10 grid gap-6 auto-rows-fr sm:grid-cols-2 lg:grid-cols-3">
+      <ol className="mt-10 grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {processSteps.map((step, index) => (
           <Reveal
             as="li"

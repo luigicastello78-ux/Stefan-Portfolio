@@ -1,10 +1,14 @@
 /**
- * PLACEHOLDER PROJECTS.
+ * Real projects.
  *
- * Every entry below is invented so the grid can be built and reviewed.
- * None of it is real work and none of it may reach production.
- * PRD section 8.4 lists this as a launch blocker. The owner supplies real
- * names, live URLs, one-line captions and screenshots before launch.
+ * Cards are not links. The owner asked for the address shown as plain text
+ * rather than anything clickable, so `ProjectCard` renders an article and
+ * the domain sits in the browser chrome as a label.
+ *
+ * The cover files under /public/work are brand-keyed stand-in plates, not
+ * screenshots. Overwrite each one, keeping the filename, and the cards pick
+ * up the real thing with no code change. Sizes should be 1600 by 1000, or
+ * anything else at 16:10.
  */
 
 export type Project = {
@@ -12,68 +16,41 @@ export type Project = {
   name: string;
   caption: string;
   tags: string[];
-  href: string;
-  /** Shown in the card's address bar. Host only, no scheme. */
+  /** Host only, no scheme. Shown in the address bar, never linked. */
   domain: string;
-  /** Placeholder gradient stand-in until real screenshots arrive. */
-  tone: string;
+  /** Path under /public. 16:10. */
+  image: string;
 };
 
-export const isPlaceholderWork = true;
+/** Nothing invented remains, so the warning banner is off. */
+export const isPlaceholderWork = false;
 
 export const projects: Project[] = [
   {
-    slug: "placeholder-one",
-    domain: "northwindstudio.com",
-    name: "Northwind Studio",
-    caption: "Marketing site for a design studio, built and live in four days.",
-    tags: ["Next.js", "Landing page"],
-    href: "#",
-    tone: "from-[#1f2b1f] to-[#0d0d0d]",
+    slug: "sequence-minds",
+    domain: "www.sequenceminds.com",
+    name: "Sequence Minds",
+    caption:
+      "Outbound lead generation agency, aimed at manufacturing and B2B teams.",
+    tags: ["Next.js", "React", "Vercel"],
+    image: "/work/sequenceminds.png",
   },
   {
-    slug: "placeholder-two",
-    domain: "cadence.app",
-    name: "Cadence",
-    caption: "Booking MVP with payments, from empty repo to first customer.",
-    tags: ["MVP", "Payments"],
-    href: "#",
-    tone: "from-[#1a2430] to-[#0d0d0d]",
+    slug: "south-africa-sdr",
+    domain: "www.southafricasdr.com",
+    name: "South Africa SDR",
+    caption:
+      "Offshore sales development service placing outbound reps with Western teams.",
+    tags: ["Next.js", "Sveltia CMS", "Vercel"],
+    image: "/work/southafricasdr.png",
   },
   {
-    slug: "placeholder-three",
-    domain: "relayops.io",
-    name: "Relay Ops",
-    caption: "Lead routing automation replacing a manual inbox process.",
-    tags: ["n8n", "Automation"],
-    href: "#",
-    tone: "from-[#2a2418] to-[#0d0d0d]",
-  },
-  {
-    slug: "placeholder-four",
-    domain: "harborlabs.co",
-    name: "Harbor Labs",
-    caption: "Product site rebuilt for speed, from a slow legacy template.",
-    tags: ["Redesign", "Performance"],
-    href: "#",
-    tone: "from-[#241a2a] to-[#0d0d0d]",
-  },
-  {
-    slug: "placeholder-five",
-    domain: "fieldnote.team",
-    name: "Fieldnote",
-    caption: "Internal dashboard for a small team, shipped in a week.",
-    tags: ["Dashboard", "Internal tool"],
-    href: "#",
-    tone: "from-[#182a26] to-[#0d0d0d]",
-  },
-  {
-    slug: "placeholder-six",
-    domain: "meridian.dev",
-    name: "Meridian",
-    caption: "Content system and technical SEO rebuild for a B2B site.",
-    tags: ["SEO", "Content"],
-    href: "#",
-    tone: "from-[#2a1a1a] to-[#0d0d0d]",
+    slug: "splice-property-solutions",
+    domain: "www.splicepropertysolutions.co.uk",
+    name: "Splice Property Solutions",
+    caption:
+      "Relocation, investment and property specialist working in Cyprus.",
+    tags: ["Next.js", "Sveltia CMS", "Vercel"],
+    image: "/work/splicepropertysolutions.png",
   },
 ];

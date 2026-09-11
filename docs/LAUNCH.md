@@ -8,14 +8,17 @@ use something that is not yours.
 
 ## Hard blockers
 
-### 1. Real projects
-`src/content/projects.ts` holds six invented projects. They are labelled as
-placeholders on the page in red, deliberately, so this cannot ship by
-accident.
+### 1. Project screenshots
+The three real projects are in. What is still stand-in is their cover art:
+`public/work/*.png` are brand-keyed plates reading "awaiting screenshot",
+not screenshots.
 
-Replace with 5 to 8 real ones. Each needs a name, a live URL, a one-line
-caption and a cover image. Then set `isPlaceholderWork` to `false` and the
-warning banner disappears.
+Overwrite each file, keeping the same filename, at 1600 by 1000 or any other
+16:10 size. No code changes needed.
+
+Confirm one thing in `src/content/projects.ts`: two projects are tagged
+"Sveltia CMS". That is the spelling of the real product; the brief said
+"svetliacms". Correct it if a different tool was meant.
 
 ### 2. Booking link
 `siteConfig.bookingUrl` falls back to the contact page. Every "book a call"

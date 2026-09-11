@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Image from "next/image";
 
 import type { Project } from "@/content/projects";
 
@@ -6,39 +6,39 @@ import type { Project } from "@/content/projects";
  * A project shown inside browser chrome. PRD section 8.4.
  *
  * The hero states the work as a terminal window, so the work states itself
- * as a browser window. It is the same motif twice and it is literal rather
- * than decorative: these are websites, and a site in a browser frame reads
- * as a site rather than as a rectangle of colour.
+ * as a browser window. Literal rather than decorative: these are websites,
+ * and a site in a browser frame reads as a site.
  *
- * The frame also does real work for the placeholders. A gradient in a
- * browser window reads as a screenshot that has not loaded yet. The same
- * gradient on a bare card just reads as a coloured box.
+ * Not a link. The owner asked for the address as plain text, so this is an
+ * article and the domain sits in the chrome as a label. That also means no
+ * hover affordances: a card that lifts or brightens under the cursor
+ * promises a click it cannot deliver.
  *
  * The heading level is a prop because the same card sits under a section
  * heading on the homepage and directly under the page title on /work.
  * Hard-coding it produced a jump from h1 to h3 on the work page.
  *
  * Every card is the same size. The grid stretches them to a common height
- * and the footer link is pushed to the bottom, so a long caption in one card
- * cannot leave the others looking unfinished.
+ * and the caption block is pushed down, so a long line in one card cannot
+ * leave the others looking unfinished.
  */
 export function ProjectCard({
   project,
   headingLevel = "h3",
   index,
+  priority = false,
 }: {
   project: Project;
   headingLevel?: "h2" | "h3";
   /** Optional running number, shown in the title bar. */
   index?: number;
+  /** Set on the first card so the cover is not lazy-loaded. */
+  priority?: boolean;
 }) {
   const Heading = headingLevel;
 
   return (
-    <Link
-      href={project.href}
-      className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-[hsl(0_0%_6%)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
-    >
+    <article className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-[hsl(0_0%_6%)]">
       {/* Title bar. */}
       <div className="flex items-center gap-3 border-b border-border/70 px-4 py-3">
         <span className="flex shrink-0 gap-1.5" aria-hidden="true">
@@ -47,7 +47,7 @@ export function ProjectCard({
           <span className="h-2.5 w-2.5 rounded-full bg-primary/50" />
         </span>
 
-        <span className="min-w-0 flex-1 truncate rounded border border-border/70 bg-background px-3 py-1 text-center font-mono text-[11px] text-muted-foreground transition-colors group-hover:text-foreground/80">
+        <span className="min-w-0 flex-1 truncate rounded border border-border/70 bg-background px-3 py-1 text-center font-mono text-[11px] text-muted-foreground">
           {project.domain}
         </span>
 
@@ -61,15 +61,15 @@ export function ProjectCard({
         ) : null}
       </div>
 
-      {/* Viewport. A gradient until real screenshots exist. */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden">
-        <div
-          className={`h-full w-full bg-gradient-to-br ${project.tone} transition-transform duration-700 ease-out group-hover:scale-[1.04]`}
-          aria-hidden="true"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-[hsl(0_0%_6%)] via-transparent to-transparent"
+      {/* Viewport. */}
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
+        <Image
+          src={project.image}
+          alt={`${project.name} home page`}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover object-top"
+          priority={priority}
         />
       </div>
 
@@ -79,7 +79,7 @@ export function ProjectCard({
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-border px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground transition-colors group-hover:border-primary/30"
+              className="rounded-full border border-border px-3 py-1 text-[11px] uppercase tracking-widest text-muted-foreground"
             >
               {tag}
             </span>
@@ -93,23 +93,12 @@ export function ProjectCard({
         <p className="mt-2 text-sm font-light leading-relaxed text-muted-foreground">
           {project.caption}
         </p>
-
-        {/* Pushed down so the link sits on the same line in every card. */}
-        <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-muted-foreground transition-colors group-hover:text-primary">
-          Open project
-          <span
-            aria-hidden="true"
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          >
-            &rarr;
-          </span>
-        </span>
       </div>
-    </Link>
+    </article>
   );
 }
 
-/** Shown while the grid still holds invented data. */
+/** Shown only while the grid still holds invented data. */
 export function PlaceholderNotice() {
   return (
     <p className="inline-flex items-center gap-2 rounded-md border border-destructive/40 bg-destructive/10 px-4 py-2 text-xs text-foreground/80">

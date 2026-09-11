@@ -31,10 +31,15 @@ export default function WorkPage() {
           </Reveal>
         ) : null}
 
-        <ul className="grid gap-6 auto-rows-fr sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <Reveal as="li" key={project.slug} delay={(index % 3) * 0.08}>
-              <ProjectCard project={project} headingLevel="h2" index={index} />
+              <ProjectCard
+                project={project}
+                headingLevel="h2"
+                index={index}
+                priority={index === 0}
+              />
             </Reveal>
           ))}
         </ul>

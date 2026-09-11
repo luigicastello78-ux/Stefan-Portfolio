@@ -32,10 +32,13 @@ export function FeaturedWork() {
 
         <Reveal delay={0.2}>
           <div className="flex items-center gap-6">
-            <span className="font-mono text-[11px] tabular-nums text-muted-foreground/60">
-              {String(shown.length).padStart(2, "0")} /{" "}
-              {String(projects.length).padStart(2, "0")}
-            </span>
+            {/* Only worth saying while the homepage is showing a subset. */}
+            {projects.length > shown.length ? (
+              <span className="font-mono text-[11px] tabular-nums text-muted-foreground/60">
+                {String(shown.length).padStart(2, "0")} /{" "}
+                {String(projects.length).padStart(2, "0")}
+              </span>
+            ) : null}
             <Link
               href="/work"
               className="group inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
@@ -58,7 +61,7 @@ export function FeaturedWork() {
         </Reveal>
       ) : null}
 
-      <ul className="mt-12 grid gap-6 auto-rows-fr sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-12 grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {shown.map((project, position) => (
           <Reveal
             as="li"
@@ -66,7 +69,11 @@ export function FeaturedWork() {
             delay={position * 0.08}
             className="h-full"
           >
-            <ProjectCard project={project} index={position} />
+            <ProjectCard
+              project={project}
+              index={position}
+              priority={position === 0}
+            />
           </Reveal>
         ))}
       </ul>
