@@ -1,0 +1,80 @@
+export const meta = {
+  title: "What actually takes the time on a web build",
+  description:
+    "Where the days really go, why the estimate is never about the code, and what makes a project run late.",
+  date: "2026-08-08",
+  tags: ["Estimates", "Process"],
+  cover: "/blog/what-actually-takes-the-time.webp",
+};
+
+When someone asks how long a site takes, they are usually asking how long the building takes. That is the wrong question, because building is no longer the expensive part.
+
+Here is where the time actually goes.
+
+## Deciding what it is
+
+Between half a day and forever.
+
+This is the only stage with no ceiling. Everything else has a natural end; this one runs until somebody decides. Projects that drift are almost always drifting here, and the drift is invisible because it looks like conversation rather than delay.
+
+The fix is a written specification, agreed, early. Not long. Agreed.
+
+## Getting the content
+
+Days to weeks, and almost never budgeted.
+
+Copy is slow because copy is deciding what you think and then committing to it in public. Photography is slow because it has to be arranged. Case studies are slow because they need somebody else's approval.
+
+I can draft all of it, and often do. Even then it comes back for correction, and correction takes a real person a real afternoon.
+
+If a project of mine runs late, this is why about eight times out of ten.
+
+## Building the thing
+
+One to three days for a marketing site. Longer for an application.
+
+This is the part that collapsed. It used to be the bulk of the estimate and now it is a slice of it. Scaffolding, layout, components, forms, the shape of the data: all of it drafts in hours rather than days.
+
+Which is exactly why quoting on this number alone is misleading. If I told you the build was two days, you would reasonably expect the site in two days, and you would be annoyed for a fortnight.
+
+## Reading what came out
+
+Continuous, and roughly as long as the building.
+
+Every line gets read and corrected. This does not shrink when the drafting gets faster. If anything it grows, because there is more to read and none of it was written by the person checking it.
+
+The trap is that it looks finished before it is. A generated page can be visually complete and still be wrong in four places nobody has looked at yet.
+
+## The last ten percent
+
+A day, reliably, and it surprises people every time.
+
+The empty states. What the form says when the email is invalid. What the page looks like with one item, or forty, or none. The behaviour at 320 pixels wide. Keyboard order. The page title in a browser tab.
+
+Individually each is minutes. Together they are a day, and skipping them is the single clearest difference between a site that feels professional and one that feels like a template.
+
+## Launch
+
+Half a day, unless DNS is involved, in which case add a day of waiting.
+
+The actual deploy is minutes. Domains, records and propagation are not, and no amount of speed on my side changes how long a nameserver takes to update.
+
+## So what is the honest answer
+
+For a marketing site with clear content and a decisive client: days, not weeks. That is the claim on the front of this site and I stand behind it.
+
+For an application with real business logic: two to three weeks for a working first version, and most of that is not the building.
+
+Anyone quoting you a single multiplier for every kind of project has not thought about it properly.
+
+## What actually makes projects run late
+
+Three things, in order.
+
+**Nobody decided.** The specification stayed vague and every question came back twice.
+
+**The content never arrived.** The site sat at ninety percent for a month waiting on three paragraphs.
+
+**The scope moved without the timeline moving.** Which is fine, as long as both move. It is only a problem when one does.
+
+None of those are technical. That is the part worth taking away. The speed of the tools has moved the bottleneck somewhere else, and the somewhere else is mostly decisions.

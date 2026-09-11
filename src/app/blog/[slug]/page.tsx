@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -82,6 +83,21 @@ export default async function PostPage({
           </Reveal>
         </div>
       </header>
+
+      {/* Cover. Decorative: the headline above already says what this is,
+          so an alt text here would only repeat it to a screen reader. */}
+      <div className="site-container bg-background pt-10 lg:pt-14">
+        <div className="relative mx-auto aspect-[16/9] w-full max-w-4xl overflow-hidden rounded-xl border border-border">
+          <Image
+            src={post.cover}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 56rem, 100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
+      </div>
 
       <article className="site-container bg-background py-16 lg:py-24">
         {/* Measure is capped here rather than in the prose components. */}

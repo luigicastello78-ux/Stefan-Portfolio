@@ -409,3 +409,37 @@ id or class.
 
 WebP at quality 86 keeps each file under 200KB. next/image re-encodes on
 request anyway, so the source format only affects the repository.
+
+## Blog covers are generated, not photographed
+
+`scripts/blog-covers.py` draws every cover from the post's slug. Same slug,
+same image, every time, and a new post gets art without anyone opening a
+design tool.
+
+```bash
+python scripts/blog-covers.py
+```
+
+Stock photography would say nothing about these posts, and a photograph of a
+laptop says less than nothing. The motif is the one the hero and the work
+cards already use: dark field, brand green, abstract lines of code. Glow
+position, line rhythm and which lines are accented all come from the slug.
+
+Two things that needed fixing while drawing them, both worth remembering if
+this script is ever extended:
+
+- The grid was first drawn as a full layer and pasted with a radial mask.
+  That layer carried its own background, which wiped the glow out of the
+  middle and left a hard vertical seam. It is now painted through a mask of
+  the lines themselves.
+- A pasted glow shows the straight edge of its own square unless the mask
+  falls to zero well before that edge. A gamma on the radial mask fixes it.
+
+Accent lines are chosen up front rather than rolled per line. Chance alone
+gave some covers three greens in a row and others none at all.
+
+Covers appear as a thumbnail on the index and full width on the post. Both
+carry an empty alt: the headline beside them already says what the post is,
+and repeating it would only make a screen reader say everything twice.
+
+Add a post, add its slug and label to `POSTS` in the script, run it.

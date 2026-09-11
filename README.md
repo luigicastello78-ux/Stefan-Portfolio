@@ -71,6 +71,19 @@ being served:
 rm -rf .next/cache/images
 ```
 
+## Adding a blog post
+
+Posts are `.mdx` files in `src/content/posts`, each exporting a `meta`
+object. Add the file, register it in `src/content/posts.ts`, then add its
+slug and a one-word label to `POSTS` in `scripts/blog-covers.py` and run:
+
+```bash
+python scripts/blog-covers.py
+```
+
+That draws the cover from the slug, so the art matches the rest of the site
+without anyone opening a design tool.
+
 ## Layout
 
 ```
@@ -80,6 +93,7 @@ public/work/          Project screenshots
 src/app/              Routes, metadata, sitemap, robots, share cards
 src/components/       Sections and shared pieces
 src/config/site.ts    Name, email, booking URL, chat widget, keywords
+public/blog/          Generated post covers
 src/content/          Posts, services, process, FAQ, project loader
 docs/                 PRD, build plan, launch checklist, engineering notes
 playground/           Separate Vite app for experiments

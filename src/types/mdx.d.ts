@@ -10,5 +10,7 @@ declare module "*.mdx" {
     /** ISO date, YYYY-MM-DD. */
     date: string;
     tags: string[];
+    /** Path under /public. 16:9. */
+    cover: string;
   };
 }
