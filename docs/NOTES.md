@@ -346,26 +346,34 @@ deployed OAuth client for a shared login. The README has the detail.
 
 ## Project screenshots are captured, not hand-made
 
-`public/work/*.webp` are real captures of the live sites, taken with the
-installed Chrome in headless mode at 1600 wide and cropped to 1600 by 1000.
+`public/work/*.webp` are real captures of the live sites. `npm run capture`
+takes them, driving the installed Chrome through puppeteer-core. No browser
+is downloaded.
 
-Two things made a naive capture useless:
-
-- Sequence Minds opens a modal a few seconds in, which greys out the hero.
-  A five second virtual time budget renders the page fully and still beats
-  it.
-- All three carry cookie bars pinned to the bottom of the viewport. Shooting
-  a taller viewport and cropping the top 1000px drops them off the frame.
-
-The taller viewport has a limit. Splice and Sequence Minds centre their hero
-vertically, so at 1400 tall the headline slid below the crop. They are shot
-at 1120 and South Africa SDR, whose cookie bar is deeper, at 1400.
-
-The command, for reference:
-
-```
-chrome --headless=new --hide-scrollbars --window-size=1600,1120   --virtual-time-budget=5000 --screenshot=out.png https://example.com
+```bash
+npm run capture -- https://example.com public/work/example.webp
 ```
 
-WebP at quality 86 keeps each file under 150KB. next/image re-encodes on
+Three things a plain `chrome --screenshot` gets wrong here:
+
+- Every one of these sites has a cookie bar pinned to the bottom of the
+  viewport, sitting on top of the hero. The script hides those elements. It
+  does not answer them: nothing is accepted or rejected on anyone's behalf,
+  the nodes are set to display none for the shot.
+- Sequence Minds opens a marketing modal on a timer that greys out the whole
+  hero behind a backdrop filter. Same treatment, and backdrops are hidden
+  separately because they outlive their dialog.
+- Fonts and network have to settle first. A hero caught mid-load looks worse
+  than no screenshot at all.
+
+An earlier attempt shot a taller viewport and cropped the bottom to escape
+the cookie bars. That fails on two of the three: Splice and Sequence Minds
+centre their hero vertically, so a taller viewport pushed the headline below
+the crop. Hiding the overlay is the version that works everywhere.
+
+Sticky headers are deliberately left alone. The rule is position fixed or
+sticky, not at the top of the page, and carrying an overlay-ish word in its
+id or class.
+
+WebP at quality 86 keeps each file under 200KB. next/image re-encodes on
 request anyway, so the source format only affects the repository.

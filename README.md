@@ -42,6 +42,17 @@ Each project is one JSON file in `content/projects`, and screenshots go in
 Screenshots want 16:10, ideally 1600 by 1000. Cards crop from the top, so
 the top of the page is what shows.
 
+To take one from a live site:
+
+```bash
+npm run capture -- https://example.com public/work/example.webp
+```
+
+It waits for the page to settle, hides cookie bars and timed marketing
+modals so they do not sit on top of the hero, and writes WebP at the card's
+aspect ratio. Nothing is accepted or rejected on a consent banner: the
+elements are hidden, not answered.
+
 ## Layout
 
 ```
