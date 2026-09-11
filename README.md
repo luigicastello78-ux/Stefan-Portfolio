@@ -73,20 +73,31 @@ rm -rf .next/cache/images
 
 ## Adding a blog post
 
-Posts are `.mdx` files in `src/content/posts`, each exporting a `meta`
-object. Add the file, register it in `src/content/posts.ts`, then add its
+Open `/admin` and use the Blog posts collection. Same as projects: it is a
+form, not a code change.
+
+Each post is one markdown file in `content/posts`, YAML frontmatter and a
+body. Writing one by hand works exactly the same, and nothing needs
+registering anywhere.
+
+For the cover, either upload your own 16:9 image in the form, or add the
 slug and a one-word label to `POSTS` in `scripts/blog-covers.py` and run:
 
 ```bash
 python scripts/blog-covers.py
 ```
 
-That draws the cover from the slug, so the art matches the rest of the site
+That draws one from the slug, so the art matches the rest of the site
 without anyone opening a design tool.
+
+Inside the body, start at the first paragraph and use `##` for sections. The
+title in the form is the page heading, so a `#` in the body would give the
+page two.
 
 ## Layout
 
 ```
+content/posts/        Blog posts, written by the CMS
 content/projects/     Work entries, written by the CMS
 public/admin/         Sveltia CMS: index.html and config.yml
 public/work/          Project screenshots

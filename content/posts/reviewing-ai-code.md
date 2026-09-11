@@ -1,12 +1,12 @@
-export const meta = {
-  title: "Five things AI gets wrong in almost every build",
-  description:
-    "The specific defects that turn up again and again in generated code, and why none of them announce themselves.",
-  date: "2026-08-15",
-  tags: ["Review", "AI"],
-  cover: "/blog/reviewing-ai-code.webp",
-};
-
+---
+title: "Five things AI gets wrong in almost every build"
+description: "The specific defects that turn up again and again in generated code, and why none of them announce themselves."
+date: 2026-08-15
+tags:
+  - "Review"
+  - "AI"
+cover: "/blog/reviewing-ai-code.webp"
+---
 Models are wrong in a particular way. Human mistakes usually look like mistakes: half-finished, obviously confused, clearly abandoned. Model mistakes look finished. The naming is sensible, the structure is tidy, and the thing is quietly incorrect.
 
 That is why the review is the job. Here are the five that come up on nearly every project, in the order I check for them.

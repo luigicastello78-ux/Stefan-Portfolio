@@ -1,12 +1,12 @@
-export const meta = {
-  title: "Your site should live in your accounts, not mine",
-  description:
-    "Who holds the domain, the repository and the hosting decides who is really in control. It should be you.",
-  date: "2026-07-25",
-  tags: ["Ownership", "Deployment"],
-  cover: "/blog/own-your-own-accounts.webp",
-};
-
+---
+title: "Your site should live in your accounts, not mine"
+description: "Who holds the domain, the repository and the hosting decides who is really in control. It should be you."
+date: 2026-07-25
+tags:
+  - "Ownership"
+  - "Deployment"
+cover: "/blog/own-your-own-accounts.webp"
+---
 There is a version of this work where the agency holds everything. The domain is registered to them, the hosting is on their account, the code is in their repository, and the analytics sit behind their login.
 
 Nothing about that arrangement is illegal and plenty of firms run it. It is still the wrong side of a line, and it only becomes obvious at the exact moment you want to leave.

@@ -1,12 +1,12 @@
-export const meta = {
-  title: "What actually takes the time on a web build",
-  description:
-    "Where the days really go, why the estimate is never about the code, and what makes a project run late.",
-  date: "2026-08-08",
-  tags: ["Estimates", "Process"],
-  cover: "/blog/what-actually-takes-the-time.webp",
-};
-
+---
+title: "What actually takes the time on a web build"
+description: "Where the days really go, why the estimate is never about the code, and what makes a project run late."
+date: 2026-08-08
+tags:
+  - "Estimates"
+  - "Process"
+cover: "/blog/what-actually-takes-the-time.webp"
+---
 When someone asks how long a site takes, they are usually asking how long the building takes. That is the wrong question, because building is no longer the expensive part.
 
 Here is where the time actually goes.

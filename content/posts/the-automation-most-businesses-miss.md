@@ -1,12 +1,12 @@
-export const meta = {
-  title: "The automation most small businesses are missing",
-  description:
-    "Not the clever kind. The boring kind, where an enquiry reaches the right person without anyone remembering to check an inbox.",
-  date: "2026-08-01",
-  tags: ["Automation", "n8n"],
-  cover: "/blog/the-automation-most-businesses-miss.webp",
-};
-
+---
+title: "The automation most small businesses are missing"
+description: "Not the clever kind. The boring kind, where an enquiry reaches the right person without anyone remembering to check an inbox."
+date: 2026-08-01
+tags:
+  - "Automation"
+  - "n8n"
+cover: "/blog/the-automation-most-businesses-miss.webp"
+---
 Ask a small business what they would automate and you get ambitious answers. A chatbot. Something with AI in it. A dashboard.
 
 Then look at how an enquiry actually reaches them, and it goes: form, to a shared inbox, that one person checks when they remember, who forwards it to whoever is free, who replies a day and a half later.

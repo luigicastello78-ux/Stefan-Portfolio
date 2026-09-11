@@ -1,12 +1,12 @@
-export const meta = {
-  title: "What AI speeds up, and what it does not",
-  description:
-    "An honest split between the parts of building software that collapsed and the parts that did not move at all.",
-  date: "2026-08-29",
-  tags: ["AI", "Opinion"],
-  cover: "/blog/what-ai-speeds-up-and-what-it-does-not.webp",
-};
-
+---
+title: "What AI speeds up, and what it does not"
+description: "An honest split between the parts of building software that collapsed and the parts that did not move at all."
+date: 2026-08-29
+tags:
+  - "AI"
+  - "Opinion"
+cover: "/blog/what-ai-speeds-up-and-what-it-does-not.webp"
+---
 The claim that AI makes development ten times faster is true for a narrow slice of the work and false for the rest. Since the slice it is true for used to be most of the calendar time, the overall effect is real. But which parts moved and which did not is worth being precise about, because the difference tells you what to hand over and what to keep.
 
 ## What genuinely collapsed

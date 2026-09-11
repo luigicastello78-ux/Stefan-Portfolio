@@ -1,12 +1,12 @@
-export const meta = {
-  title: "How an AI-assisted build actually runs, start to finish",
-  description:
-    "A walk through a real build, from the first call to deployment, and where the AI does and does not touch it.",
-  date: "2026-09-05",
-  tags: ["Process", "AI"],
-  cover: "/blog/how-an-ai-assisted-build-runs.webp",
-};
-
+---
+title: "How an AI-assisted build actually runs, start to finish"
+description: "A walk through a real build, from the first call to deployment, and where the AI does and does not touch it."
+date: 2026-09-05
+tags:
+  - "Process"
+  - "AI"
+cover: "/blog/how-an-ai-assisted-build-runs.webp"
+---
 Most descriptions of AI-assisted development skip the part that matters, which is the ordinary sequence of decisions between somebody wanting a thing and that thing being live. Here is the whole sequence, in order, with nothing left out because it is unglamorous.
 
 ## Day zero: the call

@@ -74,7 +74,12 @@ It shares the design tokens by copying `tailwind.config.ts` and the token
 block from `globals.css`. That is a copy, not an import. If the palette
 changes, change it in both places.
 
-## Blog metadata lives inside the MDX
+## Blog metadata lived inside the MDX, and no longer does
+
+The note below describes the original setup. It was replaced when the blog
+moved into the CMS: see "The blog is CMS-managed too" further down.
+
+### Original note
 
 Posts are `.mdx` files under `src/content/posts`, each exporting a `meta`
 object. That is plain ESM, so no remark or rehype frontmatter plugin is
@@ -443,3 +448,36 @@ carry an empty alt: the headline beside them already says what the post is,
 and repeating it would only make a screen reader say everything twice.
 
 Add a post, add its slug and label to `POSTS` in the script, run it.
+
+## The blog is CMS-managed too
+
+Posts are `content/posts/*.md`, YAML frontmatter and a markdown body, which
+is what Sveltia writes. `src/content/posts.ts` reads the directory at build,
+exactly like projects. Adding a post is a form at `/admin` and needs no code
+change.
+
+That required abandoning the previous arrangement, and it is worth saying
+why. Posts used to be `.mdx` modules exporting a `meta` object, imported
+statically and listed by hand in the registry. Two things made it
+unworkable for a CMS: Sveltia writes YAML frontmatter, not ESM exports, and
+every new post needed a line added to a TypeScript file, which a CMS cannot
+do.
+
+Bodies are rendered with `next-mdx-remote/rsc`, which compiles a markdown
+string at build. That keeps the prose styling, now a plain object in
+`src/components/site/prose.tsx` rather than the `useMDXComponents` hook the
+`@next/mdx` convention wanted.
+
+`@next/mdx`, `@mdx-js/loader`, `@mdx-js/react` and the `pageExtensions`
+entry are all gone with it. Nothing imports `.mdx` any more.
+
+Two details the loader handles:
+
+- gray-matter turns an unquoted YAML date into a `Date`, not a string. It is
+  normalised back to `YYYY-MM-DD`, because the whole site sorts and formats
+  on that shape.
+- A post missing a title or a date is dropped with a warning. A CMS can save
+  a half-filled entry, and a post with no title renders as a blank row.
+
+Verified by writing a file the way the CMS writes them: it appeared in the
+build with its own route and share card, with no code touched.

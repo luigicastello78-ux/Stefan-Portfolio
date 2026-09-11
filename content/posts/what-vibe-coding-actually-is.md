@@ -1,12 +1,12 @@
-export const meta = {
-  title: "What vibe coding actually is",
-  description:
-    "A plain explanation of vibe coding, what it changes about building software, and where the term gets oversold.",
-  date: "2026-09-09",
-  tags: ["Vibe coding", "AI"],
-  cover: "/blog/what-vibe-coding-actually-is.webp",
-};
-
+---
+title: "What vibe coding actually is"
+description: "A plain explanation of vibe coding, what it changes about building software, and where the term gets oversold."
+date: 2026-09-09
+tags:
+  - "Vibe coding"
+  - "AI"
+cover: "/blog/what-vibe-coding-actually-is.webp"
+---
 If you have heard the term and assumed it means describing an app to a chatbot and shipping whatever comes back, you are not wrong about how some people use it. You are wrong about how it works when someone competent does it.
 
 Here is the plain version.

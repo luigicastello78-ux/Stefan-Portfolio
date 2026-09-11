@@ -29,7 +29,8 @@ backend:
     uploadMedia: 'content: upload "{{path}}"'
     deleteMedia: 'content: delete "{{path}}"'
 
-# Screenshots land next to the ones already committed.
+# Default media location. Each collection overrides it so screenshots and
+# post covers do not end up in the same folder.
 media_folder: /public/work
 public_folder: /work
 
@@ -93,3 +94,64 @@ collections:
         widget: boolean
         default: true
         hint: Off keeps the project on the work page only.
+
+  - name: posts
+    label: Blog posts
+    label_singular: Post
+    description: >-
+      Everything on the blog. Newest first, by date. Saving here commits the
+      post and deploys it.
+    folder: /content/posts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: '{{slug}}'
+    summary: '{{title}}'
+    sortable_fields: [date, title]
+    media_folder: /public/blog
+    public_folder: /blog
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        hint: >-
+          Says what the reader gets. "What a good brief looks like" beats
+          "Thoughts on briefs".
+
+      - label: Description
+        name: description
+        widget: text
+        hint: >-
+          One sentence. It is the card summary, the search result and the
+          share preview, so write it for a stranger.
+
+      - label: Date
+        name: date
+        widget: datetime
+        format: 'YYYY-MM-DD'
+        date_format: 'DD MMMM YYYY'
+        time_format: false
+        picker_utc: true
+        hint: Sorts the blog. Newest first.
+
+      - label: Tags
+        name: tags
+        widget: list
+        min: 1
+        max: 3
+        hint: Two is usually right.
+        field: { label: Tag, name: tag, widget: string }
+
+      - label: Cover
+        name: cover
+        widget: image
+        hint: >-
+          16:9. Run `python scripts/blog-covers.py` after adding the slug to
+          that file and one is drawn for you, or upload your own here.
+
+      - label: Body
+        name: body
+        widget: markdown
+        hint: >-
+          Start at the first paragraph. The title above is the heading, so
+          use ## for sections inside the post, never #.

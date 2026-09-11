@@ -1,12 +1,12 @@
-export const meta = {
-  title: "What a good brief looks like",
-  description:
-    "The difference between a three-day build and a three-week one is usually the brief, not the code. Here is what to write down.",
-  date: "2026-08-22",
-  tags: ["Briefs", "Process"],
-  cover: "/blog/what-a-good-brief-looks-like.webp",
-};
-
+---
+title: "What a good brief looks like"
+description: "The difference between a three-day build and a three-week one is usually the brief, not the code. Here is what to write down."
+date: 2026-08-22
+tags:
+  - "Briefs"
+  - "Process"
+cover: "/blog/what-a-good-brief-looks-like.webp"
+---
 Most people think the slow part of a website is the building. It is not. The slow part is the fortnight of small corrections that happen because nobody agreed what the thing was for.
 
 A good brief is not long. The ones that work are usually a page. What matters is which page.

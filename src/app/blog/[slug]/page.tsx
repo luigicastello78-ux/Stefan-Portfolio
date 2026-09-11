@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { JsonLd } from "@/components/site/json-ld";
+import { proseComponents } from "@/components/site/prose";
 import { Reveal } from "@/components/site/reveal";
 import { buttonVariants } from "@/components/ui/button";
 import { formatPostDate, getPost, posts } from "@/content/posts";
@@ -49,7 +51,6 @@ export default async function PostPage({
   if (!post) notFound();
 
   const others = posts.filter((other) => other.slug !== post.slug).slice(0, 2);
-  const { Content } = post;
 
   return (
     <>
@@ -102,7 +103,7 @@ export default async function PostPage({
       <article className="site-container bg-background py-16 lg:py-24">
         {/* Measure is capped here rather than in the prose components. */}
         <div className="mx-auto max-w-[38rem]">
-          <Content />
+          <MDXRemote source={post.body} components={proseComponents} />
         </div>
 
         <div className="mx-auto mt-20 max-w-[38rem] border-t border-border pt-12">
