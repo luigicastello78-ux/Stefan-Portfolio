@@ -48,18 +48,24 @@ export const heroLog: LogLine[] = [
   },
 ];
 
-/** Runs along the bottom of the hero. Order is deliberate, not alphabetical. */
-export const heroMarquee = [
-  "Next.js",
-  "TypeScript",
-  "React",
-  "Tailwind",
-  "Claude",
-  "Cursor",
-  "Python",
-  "Django",
-  "n8n",
-  "Vercel",
-  "GitHub",
-  "Cloudflare",
+/**
+ * The ticker along the foot of the hero.
+ *
+ * Grouped rather than a flat list, because a run of twelve names says
+ * nothing about how they fit together. The groups are the same four the
+ * about page uses, so the site tells one story about the stack.
+ */
+export type ToolGroup = {
+  label: string;
+  items: string[];
+};
+
+export const heroMarquee: ToolGroup[] = [
+  { label: "ai", items: ["Claude", "Cursor", "ChatGPT"] },
+  {
+    label: "code",
+    items: ["Next.js", "TypeScript", "React", "Tailwind", "Python", "Django"],
+  },
+  { label: "automation", items: ["n8n", "APIs", "Webhooks"] },
+  { label: "deploy", items: ["Vercel", "GitHub", "Cloudflare"] },
 ];

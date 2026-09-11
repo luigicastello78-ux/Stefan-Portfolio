@@ -296,3 +296,21 @@ rendered questions and the schema questions are compared in the same order.
 `name="faq"` makes the group exclusive, so opening one closes the last.
 Browsers without support allow several open at once, which is fine. The
 first item ships open so the interaction is visible without a click.
+
+## The hero ticker
+
+It started as twelve tool names in flat grey, which read as filler. It is
+now grouped: a green category label, a hairline, then that group's tools as
+bordered chips. Four groups, thirty chips, same strip height.
+
+A fixed "Stack" label holds the left edge behind a rule, so the strip reads
+as a ticker with a masthead rather than as text that happens to be moving.
+Both edges fade, so chips neither hard-cut against the rule nor vanish
+abruptly on the way out.
+
+The groups are the same four the about page uses, so the site tells one
+story about the stack instead of two.
+
+The track got much longer, so the duration went from 42s to 64s. Translating
+a wider track over the same time means it moves faster, which is easy to
+forget when adding content to a marquee.

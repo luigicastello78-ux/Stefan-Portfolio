@@ -97,7 +97,7 @@ const config: Config = {
         "drift-a": "drift-a 28s ease-in-out infinite",
         "drift-b": "drift-b 36s ease-in-out infinite",
         "grid-pan": "grid-pan 16s linear infinite",
-        marquee: "marquee 42s linear infinite",
+        marquee: "marquee 64s linear infinite",
         "caret-blink": "caret-blink 1.2s steps(1) infinite",
       },
     },
