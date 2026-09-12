@@ -11,9 +11,10 @@ export const siteConfig = {
     "Websites, web apps and Webflow builds, with technical SEO and n8n automation wired in. Designed, built and handed over properly.",
   url: "https://stefanstankovski.com",
   email: "contact@stefanstankovski.com",
-  // TODO: replace with the owner's real booking URL. PRD section 10.1.
-  // Until it exists every booking control falls back to the contact page.
-  bookingUrl: "/contact",
+  // Every "book a call" control on the site points here. An absolute URL
+  // makes the contact page switch from email-first to booking-first on its
+  // own, and next/link renders it as a plain anchor with no prefetching.
+  bookingUrl: "https://cal.com/stefan-stankovski-wuhjjo/30min",
   // Portrait under /public, or null to fall back to a stand-in.
   portrait: "/stefan-portrait.jpg" as string | null,
   // Handwritten mark, used as a CSS mask so it can be recoloured. Its own

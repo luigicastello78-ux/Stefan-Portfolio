@@ -20,13 +20,7 @@ The three projects and their screenshots are in. Two things to check in
 Screenshots were captured from the live sites at 1600 by 1000. Replacing one
 is a file swap or an upload through /admin.
 
-### 2. Booking link
-`siteConfig.bookingUrl` falls back to the contact page. Every "book a call"
-control on the site points at it. Put your Cal.com or Calendly URL there and
-the contact page switches from an email-first layout to a booking-first one
-on its own.
-
-### 3. Contact form destination
+### 2. Contact form destination
 The form works, validates and rate limits, but has nowhere to deliver. Set
 either `CONTACT_WEBHOOK_URL` for n8n, or `RESEND_API_KEY` with
 `CONTACT_TO_EMAIL` and `CONTACT_FROM_EMAIL`. See `.env.example`.
@@ -35,7 +29,7 @@ Send one real test message after configuring. Until then the form refuses
 submissions and tells the sender to email instead, which is honest but not
 what you want live.
 
-### 4. Monogram
+### 3. Monogram
 `src/components/site/monogram.tsx` is still my approximation of your angular
 S mark, drawn from the images you sent. The file itself has never reached
 the repository. Drop the real SVG in and replace the path.
