@@ -29,15 +29,6 @@ Send one real test message after configuring. Until then the form refuses
 submissions and tells the sender to email instead, which is honest but not
 what you want live.
 
-### 3. Monogram
-`src/components/site/monogram.tsx` is still my approximation of your angular
-S mark, drawn from the images you sent. The file itself has never reached
-the repository. Drop the real SVG in and replace the path.
-
-The handwritten signature is in place. It sits at the foot of the footer,
-drawn through a CSS mask so only its shape is used and its own mint green
-never appears next to the brand green.
-
 ---
 
 ## Should do before launch

@@ -514,3 +514,27 @@ The FAQ was rewritten from scratch. It used to open with "What is vibe
 coding?"; it now opens with "What do you actually build?" and adds the
 question this positioning invites, which is Webflow or custom code. The
 FAQPage schema follows it automatically.
+
+## The mark
+
+`src/components/site/monogram.tsx`. An angular S on a strict grid: three
+horizontal bars, two vertical risers, right angles only, no curves. The
+bottom bar is the brand green.
+
+The green is part of the letter rather than an ornament beside it. A
+detached caret was drawn first, echoing the hero panel, and dropped after
+rendering it at navigation size, where it read as a rendering artefact
+rather than a deliberate mark. Two other variants, a green top bar and a
+plain single-colour S, were rendered and compared at 28 and 120 pixels
+before settling.
+
+It is a stroked polyline, not filled shapes, so weight scales with the box
+and the outline stays editable. The letter uses `currentColor` so it works
+on any background; only the bottom bar is fixed.
+
+`src/app/icon.svg` is the same mark on a rounded dark tile, which replaces
+the scaffold's `favicon.ico`. The two have to be edited together: the
+component is not the source of the icon.
+
+This replaces the placeholder drawn from the images the owner sent early on.
+That one was never the real logo and was listed as a launch blocker.
