@@ -6,7 +6,7 @@ import { services } from "@/content/services";
 import { siteConfig } from "@/config/site";
 
 /**
- * Five service lines. PRD section 8.3. No prices anywhere.
+ * Six service lines. PRD section 8.3. No prices anywhere.
  *
  * Editorial rows rather than a card grid. A card grid gives six things equal
  * weight and equal size, which reads like a feature list on a SaaS page. Set
@@ -32,7 +32,7 @@ export function Services() {
       <SectionHeading
         eyebrow="Services"
         title="What I build"
-        lede="Five things, done properly. No packages, no price list. Every one of them starts with a call."
+        lede="Six things, done properly. No packages, no price list. Every one of them starts with a call."
       />
 
       <ol className="-mx-5 mt-16 border-t border-border md:-mx-7 lg:-mx-9">
@@ -99,8 +99,9 @@ export function Services() {
               Something that is none of the above
             </h3>
             <p className="mt-2 max-w-lg text-sm font-light leading-relaxed text-muted-foreground">
-              Most work is a mix of the five anyway. Describe the problem and I
-              will tell you whether I am the right person for it.
+              Most work is a mix of several of them anyway. Describe the
+              problem and I will tell you whether I am the right person for
+              it.
             </p>
           </div>
           <Link

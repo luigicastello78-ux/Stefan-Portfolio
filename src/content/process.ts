@@ -5,9 +5,9 @@
  * two can never drift. The page adds longer prose on top of these fields;
  * everything structural lives here.
  *
- * Step 03 is where the "but AI wrote it" objection gets answered. It is
- * stated as part of the sequence rather than as a separate defensive
- * section, because that is where it actually belongs.
+ * Step 03 is where the quality question gets answered. It is stated as part
+ * of the sequence rather than as a separate defensive section, because that
+ * is where it actually belongs.
  */
 
 export type ProcessStep = {
@@ -39,14 +39,14 @@ export const processSteps: ProcessStep[] = [
     description:
       "A version to react to instead of a blank page. This is where the speed comes from.",
     you: "Nothing yet",
-    me: "Generate the layout, the code and the copy with AI",
+    me: "Build the layout, the code and the copy",
     duration: "One to three days",
   },
   {
     number: "03",
     title: "Review",
     description:
-      "Every line read, tested and corrected. Nothing ships because a model produced it.",
+      "Every line read, tested and corrected, on real devices. Nothing ships because it looked right on my screen.",
     you: "Nothing yet",
     me: "Throw out what is wrong, test what is left",
     duration: "Runs alongside the draft",

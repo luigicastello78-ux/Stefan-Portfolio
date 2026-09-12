@@ -6,9 +6,9 @@
 export const siteConfig = {
   name: "Stefan Stankovski",
   wordmark: "STEFAN",
-  title: "Stefan Stankovski — AI / Vibe-Code Developer",
+  title: "Stefan Stankovski — Web Development, Design and Automation",
   description:
-    "AI-assisted development. Websites, web apps and MVPs built with AI pair-programming and reviewed line by line.",
+    "Websites, web apps and Webflow builds, with technical SEO and n8n automation wired in. Designed, built and handed over properly.",
   url: "https://stefanstankovski.com",
   email: "websites@leadmaker.agency",
   // TODO: replace with the owner's real booking URL. PRD section 10.1.
@@ -23,14 +23,14 @@ export const siteConfig = {
   /** Google Search Console HTML tag token, or null until verified. */
   googleSiteVerification: null as string | null,
   keywords: [
-    "vibe code developer",
-    "AI web developer",
-    "AI-assisted development",
-    "AI developer for startups",
-    "build MVP with AI",
-    "AI automation developer",
-    "n8n automation freelancer",
-    "rapid MVP development",
+    "web developer",
+    "web design and development",
+    "web app development",
+    "Webflow developer",
+    "technical SEO",
+    "n8n automation",
+    "workflow automation developer",
+    "MVP development",
   ],
   social: {
     github: "#",

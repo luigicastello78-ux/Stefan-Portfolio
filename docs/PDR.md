@@ -3,9 +3,37 @@
 
 **Owner:** Stefan Stankovski
 **Document status:** Draft v1.0 — awaiting sign-off
-**Last updated:** 2026-09-09
+**Last updated:** 2026-09-12
 **Source:** Original repositioning PRD + 20-question discovery round + follow-up round
 **Build status:** Not started. No code is to be written until the owner gives explicit approval.
+
+---
+
+## Revision 2, 2026-09-12: positioning changed
+
+The owner dropped the "vibe coding" term and repositioned the site around
+web development and design, technical SEO, Webflow and n8n automation.
+
+Everything below this line was written for the original positioning and is
+kept as the record of how the site got here. Where the two disagree, this
+revision wins.
+
+| | Revision 1 | Revision 2 |
+|---|---|---|
+| Job title | Vibe-Code Developer | Web developer and designer |
+| Lead service | AI-assisted development | Web design and build |
+| Webflow | Removed from the site entirely | Named service and a stated skill |
+| SEO | A supporting service | A named service in its own right |
+| Automation | A supporting service | A named service in its own right |
+| Keywords | vibe code developer, AI web developer | web developer, Webflow developer, technical SEO, n8n automation |
+
+What did not change: speed still leads the headline, prices stay off the
+site, work is hourly or retainer, the audience is still founders and small
+teams, and the site is still global with no location positioning.
+
+AI is no longer a positioning claim. It survives only where it is
+substantive, inside the blog posts that discuss how the work is done. It
+appears nowhere in the navigation, the services, the schema or the metadata.
 
 ---
 

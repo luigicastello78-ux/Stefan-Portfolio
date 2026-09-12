@@ -24,14 +24,14 @@ export const heroLog: LogLine[] = [
   },
   {
     marker: "→",
-    text: "draft the layout, the code and the copy",
-    by: "ai",
+    text: "design and build the thing",
+    by: "web",
     tone: "step",
   },
   {
     marker: "→",
-    text: "read it all, keep what survives",
-    by: "human",
+    text: "structure it so it can be found",
+    by: "seo",
     tone: "step",
   },
   {
@@ -66,12 +66,12 @@ export type ToolGroup = {
 };
 
 export const heroMarquee: ToolGroup[] = [
-  { label: "ai", items: ["Claude", "Cursor", "ChatGPT"] },
   {
     label: "code",
     items: ["Next.js", "TypeScript", "React", "Tailwind", "Python", "Django"],
   },
   { label: "no-code", items: ["Webflow", "WordPress", "Shopify"] },
+  { label: "seo", items: ["Search Console", "Schema", "Core Web Vitals"] },
   { label: "automation", items: ["n8n", "APIs", "Webhooks"] },
   { label: "deploy", items: ["Vercel", "GitHub", "Cloudflare"] },
 ];

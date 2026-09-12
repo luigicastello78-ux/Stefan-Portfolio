@@ -20,12 +20,13 @@ import { cn } from "@/lib/utils";
  * screen is text, borders and gradients.
  *
  * The headline carries both halves of the positioning rather than only the
- * speed: built in days is the hook, read line by line is the reason anyone
- * should believe it. Leading on speed alone invites the obvious suspicion,
- * and answering it in the same breath is cheaper than answering it later.
+ * speed: built in days is the hook, built to keep working is the reason
+ * anyone should believe it. Leading on speed alone invites the obvious
+ * suspicion, and answering it in the same breath is cheaper than answering
+ * it later.
  *
- * The keyword stays in the subheading, where it was, so nothing is lost by
- * the headline no longer containing it.
+ * The subheading names the four services, which is where the keywords live
+ * now that the headline is a claim rather than a job title.
  */
 
 /** Three facts under the buttons. Plain, checkable, no invented metrics. */
@@ -40,7 +41,7 @@ export function Hero() {
     <section className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-hero-bg pt-24 lg:pt-32">
       <HeroBackdrop />
 
-      <div className="site-container relative z-10 w-full py-10 lg:py-16">
+      <div className="site-container relative z-10 w-full py-10 lg:py-12">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
             <p
@@ -55,24 +56,24 @@ export function Hero() {
               style={{ animationDelay: "0.2s" }}
             >
               Built in <span className="text-primary">days</span>.
-              <br className="hidden sm:block" /> Read line by line.
+              <br className="hidden sm:block" /> Built to keep working.
             </h1>
 
             <p
-              className="mt-6 max-w-xl animate-fade-up text-[clamp(1.05rem,2vw,1.5rem)] font-light leading-snug text-foreground/80 opacity-0"
+              className="mt-5 max-w-2xl animate-fade-up text-[clamp(1.05rem,2vw,1.5rem)] font-light leading-snug text-foreground/80 opacity-0"
               style={{ animationDelay: "0.35s" }}
             >
-              Vibe-code developer. AI writes the first draft. I decide what
-              survives.
+              Web development, design, technical SEO and automation. One
+              person, start to finish.
             </p>
 
             <p
               className="mt-5 max-w-lg animate-fade-up text-sm font-light leading-relaxed text-muted-foreground opacity-0 md:text-base"
               style={{ animationDelay: "0.45s" }}
             >
-              Websites, web apps and MVPs for people who want the thing
-              working, not a deck about the thing. The automation goes in
-              too, so it keeps running after you stop watching it.
+              Websites, web apps and Webflow builds for people who want the
+              thing working, not a deck about the thing. The automation goes
+              in too, so it keeps running after you stop watching it.
             </p>
 
             <div
@@ -96,7 +97,7 @@ export function Hero() {
             </div>
 
             <dl
-              className="mt-10 grid animate-fade-up grid-cols-2 gap-5 border-t border-border/70 pt-7 opacity-0 sm:grid-cols-3 lg:mt-12 lg:gap-6 lg:pt-8"
+              className="mt-10 grid animate-fade-up grid-cols-2 gap-5 border-t border-border/70 pt-7 opacity-0 sm:grid-cols-3 lg:mt-10 lg:gap-6 lg:pt-7"
               style={{ animationDelay: "0.75s" }}
             >
               {facts.map((fact) => (

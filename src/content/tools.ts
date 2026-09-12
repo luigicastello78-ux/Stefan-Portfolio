@@ -1,7 +1,7 @@
 /**
  * Tooling groups. PRD section 8.7.
- * No-code platform branding is deliberately absent, per the decision to drop
- * Webflow positioning from the site entirely.
+ * These match the groups in the hero ticker, so the stack is described the
+ * same way in both places.
  */
 
 export type ToolGroup = {
@@ -11,12 +11,16 @@ export type ToolGroup = {
 
 export const toolGroups: ToolGroup[] = [
   {
-    name: "AI",
-    items: ["Claude", "ChatGPT", "Cursor", "Claude Code"],
-  },
-  {
     name: "Code",
     items: ["TypeScript", "React", "Next.js", "Python", "Django", "Tailwind"],
+  },
+  {
+    name: "No-code",
+    items: ["Webflow", "WordPress", "Shopify"],
+  },
+  {
+    name: "SEO",
+    items: ["Search Console", "Schema", "Core Web Vitals", "Analytics"],
   },
   {
     name: "Automation",

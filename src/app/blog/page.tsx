@@ -9,7 +9,7 @@ import { formatPostDate, posts } from "@/content/posts";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Notes on AI-assisted development. What vibe coding is, how a build runs, what to put in a brief, and what AI gets wrong.",
+    "Notes on building for the web. How a build runs, what to put in a brief, what actually takes the time, and the automation most businesses miss.",
   alternates: { canonical: "/blog" },
 };
 
@@ -18,8 +18,8 @@ export default function BlogPage() {
     <>
       <PageHeader
         eyebrow="Blog"
-        title="Notes on building with AI"
-        lede="Written for people deciding whether to hire someone who works this way. No hype, and no pretending the tools do more than they do."
+        title="Notes on building for the web"
+        lede="Written for people deciding who to hire. No hype, and no pretending any of it is more complicated than it is."
       />
 
       <section className="site-container bg-background py-20 lg:py-28">

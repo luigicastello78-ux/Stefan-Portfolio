@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 /** Extra depth that the homepage cards deliberately leave out. */
 const expanded: Record<string, { what: string; who: string }> = {
   "01": {
-    what: "A site that loads fast, reads well and can be edited without calling me. Design, build, content and launch.",
+    what: "A site that loads fast, reads well and says what you do above the fold. Design, build, content and launch.",
     who: "You have a product or a service and the current site is either ugly, slow, or does not exist.",
   },
   "02": {
@@ -29,10 +29,14 @@ const expanded: Record<string, { what: string; who: string }> = {
     who: "Something in your business runs on somebody remembering to do it.",
   },
   "04": {
-    what: "Technical fixes first, then content that is actually about something. Structure, schema, speed, then words.",
+    what: "Structure, metadata, schema, speed, and Search Console set up so the next three months are measurable rather than a guess.",
     who: "You rank for your own name and nothing else.",
   },
   "05": {
+    what: "A Webflow build your team can edit, with CMS collections modelled so adding a page cannot break the design.",
+    who: "Somebody in-house will be updating this weekly and you do not want that to mean a developer.",
+  },
+  "06": {
     what: "Repositories, pipelines, domains and monitoring, set up in accounts you own and documented so you can leave.",
     who: "You want to own the thing you paid for.",
   },
@@ -43,8 +47,8 @@ export default function ServicesPage() {
     <>
       <PageHeader
         eyebrow="Services"
-        title="Five things, done properly"
-        lede="No packages and no price list. Work is hourly or on a monthly retainer, and which one suits you comes out of the first call."
+        title="What I build"
+        lede="Six things, done properly. No packages and no price list. Work is hourly or on a monthly retainer, and which one suits you comes out of the first call."
       />
 
       <section className="site-container bg-background py-20 lg:py-28">

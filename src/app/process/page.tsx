@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 const detail: Record<string, string> = {
   "01": "Most failed projects fail here, quietly, and nobody notices until the end. The specification is short but it is written down, because a vague brief produces a vague first draft, and correcting a vague draft takes longer than writing the thing by hand.",
   "02": "What used to be a week of boilerplate and blank pages is now an afternoon. It is not finished, it is a version to argue with, and seeing a wrong version of a page tells you more about the right one than an hour of thinking about it.",
-  "03": "Models are confidently wrong on a regular basis, and catching that is the job. The specific things that come up every time: logic that reads correctly and behaves backwards, dependencies nobody asked for, accessibility quietly skipped, and security handled by hope.",
+  "03": "The specific things that come up every time: logic that reads correctly and behaves backwards, dependencies nobody asked for, accessibility quietly skipped, and security handled by hope. None of them announce themselves, which is exactly why this stage is not optional.",
   "04": "This is the part clients notice most after launch, because it is the difference between a website and something that runs a piece of their business. It should also fail loudly rather than silently, which is a design decision, not an accident.",
   "05": "Documented well enough that somebody else could pick it up. Not a manual, just the moving parts, where the configuration lives, and what to do when something breaks. If you cannot leave me, I have built the wrong thing.",
   "06": "No retainer is pushed on anyone. Plenty of projects are finished when they are finished. The option exists because some clients would rather have someone who already knows the codebase than brief a stranger every time something changes.",
@@ -96,10 +96,10 @@ export default function ProcessPage() {
             One thing worth saying plainly
           </h2>
           <p className="mt-4 max-w-2xl text-sm font-light leading-relaxed text-muted-foreground">
-            AI writes the first draft. It does not decide what to build, it
-            does not catch its own mistakes, and it does not carry the
-            consequences. That part is still a person, and on your project the
-            person is me.
+            Tools have got faster. Deciding what to build, noticing when
+            something is quietly wrong, and carrying the consequences have
+            not. That part is still a person, and on your project the person
+            is me.
           </p>
           <Link
             href={siteConfig.bookingUrl}

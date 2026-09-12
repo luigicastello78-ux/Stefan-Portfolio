@@ -481,3 +481,36 @@ Two details the loader handles:
 
 Verified by writing a file the way the CMS writes them: it appeared in the
 build with its own route and share card, with no code touched.
+
+## Repositioned: no more "vibe coding"
+
+The term is gone from every part of the site. Positioning is now web
+development and design, technical SEO, Webflow and n8n automation. Revision
+2 at the top of `PDR.md` records what changed against what it replaced.
+
+Two earlier decisions were reversed by this, and both are worth knowing
+about because the site had been built around them:
+
+- The job title was "Vibe-Code Developer", owned deliberately. It is now
+  plainly "web developer and designer", in the copy, the metadata and the
+  Person schema.
+- Webflow had been stripped from the site entirely under decision 16. It is
+  now a named service, a tool group on the about page, and a keyword.
+
+Services went from five to six. Webflow builds and technical SEO are now
+lines in their own right rather than clauses inside other lines.
+
+AI survives only where it is substantive: inside blog posts that discuss how
+the work is done. It appears nowhere in the navigation, the services, the
+schema, the metadata or the hero. It is a method, not a pitch.
+
+The post named after the term was rewritten rather than deleted. Its
+argument, that speed comes from removing waiting rather than removing
+review, is the same argument and holds without the word. It is now "How a
+site gets built in days without cutting corners" at a new slug, with its
+cover regenerated to match.
+
+The FAQ was rewritten from scratch. It used to open with "What is vibe
+coding?"; it now opens with "What do you actually build?" and adds the
+question this positioning invites, which is Webflow or custom code. The
+FAQPage schema follows it automatically.

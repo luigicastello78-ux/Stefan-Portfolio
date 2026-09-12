@@ -30,7 +30,7 @@ OUT_DIR = Path("public/blog")
 
 # slug, label shown on the cover
 POSTS = [
-    ("what-vibe-coding-actually-is", "vibe coding"),
+    ("how-a-site-gets-built-in-days", "speed"),
     ("how-an-ai-assisted-build-runs", "process"),
     ("what-ai-speeds-up-and-what-it-does-not", "ai"),
     ("what-a-good-brief-looks-like", "briefs"),

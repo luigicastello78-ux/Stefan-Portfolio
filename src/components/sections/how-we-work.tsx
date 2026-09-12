@@ -9,9 +9,9 @@ import { siteConfig } from "@/config/site";
  * How we work. PRD sections 8.5 and 8.6, merged.
  *
  * This replaces two separate sections: a timeline of the build, and a
- * defensive block answering "if AI wrote it, is it any good?". They were
- * saying the same thing twice. The objection is now answered where it
- * actually belongs, at the review stage, as part of the sequence.
+ * defensive block about build quality. They were saying the same thing
+ * twice. The quality question is now answered where it actually belongs, at
+ * the review stage, as part of the sequence.
  *
  * Six equal cards in a three by two grid. The interesting column is the
  * one saying what the client has to do, because that is the question they
@@ -104,10 +104,10 @@ export function HowWeWork() {
               Worth saying plainly
             </h3>
             <p className="mt-2 max-w-2xl text-sm font-light leading-relaxed text-muted-foreground">
-              AI writes the first draft. It does not decide what to build, it
-              does not catch its own mistakes, and it does not carry the
-              consequences. That part is still a person, and on your project
-              the person is me.
+              Tools have got faster. Deciding what to build, noticing when
+              something is quietly wrong, and carrying the consequences have
+              not. That part is still a person, and on your project the
+              person is me.
             </p>
           </div>
           <Link

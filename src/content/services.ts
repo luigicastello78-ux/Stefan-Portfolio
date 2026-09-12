@@ -1,4 +1,4 @@
-/** Five service lines. PRD section 8.3. Outcome-led, never tool-led. */
+/** Six service lines. PRD section 8.3. Outcome-led, never tool-led. */
 
 export type Service = {
   number: string;
@@ -10,16 +10,16 @@ export type Service = {
 export const services: Service[] = [
   {
     number: "01",
-    title: "Websites that ship",
+    title: "Web design and build",
     description:
-      "Landing pages, marketing sites and redesigns. Drafted with AI, finished by hand, live in days.",
-    detail: ["Landing pages", "Full marketing sites", "Redesigns", "Copy"],
+      "Landing pages, marketing sites and redesigns. Designed and built to say what you do in the first line.",
+    detail: ["Landing pages", "Marketing sites", "Redesigns", "Copy"],
   },
   {
     number: "02",
     title: "Web apps and MVPs",
     description:
-      "A working product instead of a deck. Built with AI pair-programming and reviewed line by line.",
+      "A working product instead of a deck. Real data, real accounts, deployed where people can use it.",
     detail: ["MVPs", "Internal tools", "Dashboards", "APIs"],
   },
   {
@@ -31,14 +31,21 @@ export const services: Service[] = [
   },
   {
     number: "04",
-    title: "SEO and content",
+    title: "Technical SEO",
     description:
-      "Technical SEO done properly, with copy drafted fast and edited by someone who reads it.",
-    detail: ["Technical SEO", "Schema", "Content systems", "Search Console"],
+      "The half of SEO that is engineering. Structure, schema, speed, and the reporting set up so you can see what changes.",
+    detail: ["Site structure", "Schema", "Core Web Vitals", "Search Console"],
   },
   {
     number: "05",
-    title: "Deployment and operations",
+    title: "Webflow builds",
+    description:
+      "For sites your team edits without calling a developer. Built properly, with the CMS set up so nobody can break the layout.",
+    detail: ["Webflow", "CMS collections", "Migrations", "Handover"],
+  },
+  {
+    number: "06",
+    title: "Deployment and handover",
     description:
       "Shipped, monitored and handed over. Repositories, domains and pipelines you actually own.",
     detail: ["Vercel", "GitHub", "Domains and DNS", "Monitoring"],

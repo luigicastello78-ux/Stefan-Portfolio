@@ -11,7 +11,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Self-taught developer working through AI-assisted builds alongside real code. Three years shipping websites, apps and automation.",
+    "Self-taught developer and designer. Three years shipping websites, web apps, Webflow builds and the automation behind them.",
   alternates: { canonical: "/about" },
 };
 
@@ -36,16 +36,16 @@ export default function AboutPage() {
             <Reveal delay={0.08}>
               <div className="space-y-6 text-base font-light leading-relaxed text-foreground/80">
                 <p>
-                  I am Stefan. I build websites, web apps and automation, and I
-                  do it with AI sitting next to me the entire time.
+                  I am Stefan. I design and build websites and web apps, make
+                  them findable, and wire up the automation that keeps them
+                  earning after launch.
                 </p>
                 <p>
-                  That phrase makes some people nervous, so here is what it
-                  actually means. A model writes the first version. I read all
-                  of it, throw out the parts that are wrong, and keep the parts
-                  that are not. The result is that a build which used to take
-                  three weeks now takes three days, and the quality is my
-                  problem either way.
+                  In code when the project needs it, in Webflow when the point
+                  is that your team can edit it without calling a developer.
+                  Most of my work is one of those two, plus the technical SEO
+                  and the n8n workflows that make the difference between a
+                  website and something that runs part of your business.
                 </p>
                 <p>
                   I am self-taught, and I studied at FINKI. Three years of

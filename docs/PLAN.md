@@ -165,6 +165,13 @@ The held state at the end is deliberate. The site will be finished and waiting o
 
 ---
 
+## Positioning changed after this plan was written
+
+See revision 2 at the top of `PDR.md`. The term "vibe coding" is gone from
+the site and the positioning is now web development and design, technical
+SEO, Webflow and n8n automation. The build phases below were all delivered;
+only the words they were delivered with have moved on.
+
 ## Status
 
 | Part | State | Notes |

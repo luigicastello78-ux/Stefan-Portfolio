@@ -50,7 +50,7 @@ export default async function OpengraphImage() {
             color: "#05e901",
           }}
         >
-          Vibe-code developer
+          Web, SEO and automation
         </div>
 
         <div
@@ -70,7 +70,7 @@ export default async function OpengraphImage() {
               color: "#f5f5f5",
             }}
           >
-            In days, not weeks
+            Built in days
           </div>
           <div
             style={{
@@ -79,7 +79,7 @@ export default async function OpengraphImage() {
               color: "#999999",
             }}
           >
-            Stefan Stankovski &middot; Websites, apps and automation
+            Stefan Stankovski &middot; Web development, design and automation
           </div>
         </div>
       </div>

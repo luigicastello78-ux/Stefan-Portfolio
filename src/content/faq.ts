@@ -1,7 +1,7 @@
 /**
  * Plain-language answers to the questions that stop people enquiring.
- * PRD section 6, added for the featured-snippet opportunity around
- * "what is vibe coding". Structured data is wired up in Part 5.
+ * PRD section 6. Structured data mirrors this list exactly, so the two have
+ * to be edited together.
  */
 
 export type FaqItem = {
@@ -11,24 +11,29 @@ export type FaqItem = {
 
 export const faq: FaqItem[] = [
   {
-    question: "What is vibe coding?",
+    question: "What do you actually build?",
     answer:
-      "Building software by describing what you want in plain language, letting an AI model write the first version, then reviewing and correcting it yourself. The model does the typing. A developer decides what gets built and owns the result.",
+      "Websites and web apps, in code or in Webflow depending on who has to edit them afterwards. Technical SEO so they can be found, and automation so the leads and the admin move without anyone copying and pasting.",
   },
   {
-    question: "How does AI-assisted development work in practice?",
+    question: "Webflow or custom code?",
     answer:
-      "A precise brief becomes a prompt. The model produces a first draft in hours instead of days. The rest of the project is a developer reading that draft, throwing out what is wrong, and testing what is left. The review does not get skipped, it gets longer.",
-  },
-  {
-    question: "Is AI-generated code any good?",
-    answer:
-      "On its own, unpredictably. Models are wrong fluently, which means their mistakes look finished. That is exactly why every line gets read and tested before it ships. The speed comes from removing waiting, not from removing review.",
+      "Webflow when the client wants to edit pages themselves without calling a developer. Custom code when the site has to do something Webflow cannot, or when it is an application rather than a set of pages. I will tell you which one your project is on the first call, including when the answer is the cheaper one.",
   },
   {
     question: "How fast is a typical build?",
     answer:
-      "A marketing site is usually days rather than weeks. An application with real business logic is two to three weeks for a working first version. Anyone quoting one multiplier for every kind of project has not thought about it properly.",
+      "A marketing site is usually days rather than weeks. A web app with real business logic is two to three weeks for a working first version. Anyone quoting one number for every kind of project has not thought about it properly.",
+  },
+  {
+    question: "Do you do the SEO as well?",
+    answer:
+      "The technical half, always, because it is part of building the thing properly: structure, metadata, schema, speed, and Search Console set up so you can see what happens next. Content and ongoing link work is a separate conversation.",
+  },
+  {
+    question: "What does the automation actually do?",
+    answer:
+      "Usually it removes a step that depends on somebody remembering. An enquiry reaching the right person in the tool they already use, a follow-up that fires on its own, a record that writes itself. Mostly built in n8n, connected to whatever you already run on.",
   },
   {
     question: "What does it cost?",
