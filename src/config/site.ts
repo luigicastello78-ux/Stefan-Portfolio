@@ -10,7 +10,7 @@ export const siteConfig = {
   description:
     "Websites, web apps and Webflow builds, with technical SEO and n8n automation wired in. Designed, built and handed over properly.",
   url: "https://stefanstankovski.com",
-  email: "websites@leadmaker.agency",
+  email: "contact@stefanstankovski.com",
   // TODO: replace with the owner's real booking URL. PRD section 10.1.
   // Until it exists every booking control falls back to the contact page.
   bookingUrl: "/contact",
