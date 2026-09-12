@@ -19,15 +19,20 @@ import { cn } from "@/lib/utils";
  * strip of tooling along the foot. Nothing here is a canvas: the whole
  * screen is text, borders and gradients.
  *
- * Headline: PRD decision 5, option B, split across the eyebrow and the H1.
- * The full sentence at display size runs to five lines.
+ * The headline carries both halves of the positioning rather than only the
+ * speed: built in days is the hook, read line by line is the reason anyone
+ * should believe it. Leading on speed alone invites the obvious suspicion,
+ * and answering it in the same breath is cheaper than answering it later.
+ *
+ * The keyword stays in the subheading, where it was, so nothing is lost by
+ * the headline no longer containing it.
  */
 
 /** Three facts under the buttons. Plain, checkable, no invented metrics. */
 const facts = [
-  { label: "Based", value: "Remote, working globally" },
-  { label: "Working with", value: "Founders and small teams" },
-  { label: "Status", value: "Available for new builds" },
+  { label: "Where", value: "Remote, working globally" },
+  { label: "Who with", value: "Founders and small teams" },
+  { label: "Right now", value: "Available for new builds" },
 ];
 
 export function Hero() {
@@ -46,27 +51,28 @@ export function Hero() {
             </p>
 
             <h1
-              className="mt-5 animate-fade-up text-[clamp(2.75rem,7vw,5.5rem)] font-bold uppercase leading-[1.02] tracking-[-0.045em] text-foreground opacity-0"
+              className="mt-5 animate-fade-up text-[clamp(2.4rem,5vw,4.25rem)] font-bold uppercase leading-[1.02] tracking-[-0.045em] text-foreground opacity-0"
               style={{ animationDelay: "0.2s" }}
             >
-              In <span className="text-primary">days</span>,
-              <br className="hidden sm:block" /> not weeks
+              Built in <span className="text-primary">days</span>.
+              <br className="hidden sm:block" /> Read line by line.
             </h1>
 
             <p
               className="mt-6 max-w-xl animate-fade-up text-[clamp(1.05rem,2vw,1.5rem)] font-light leading-snug text-foreground/80 opacity-0"
               style={{ animationDelay: "0.35s" }}
             >
-              Vibe-code developer. AI writes the first draft and I own every
-              line that ships.
+              Vibe-code developer. AI writes the first draft. I decide what
+              survives.
             </p>
 
             <p
               className="mt-5 max-w-lg animate-fade-up text-sm font-light leading-relaxed text-muted-foreground opacity-0 md:text-base"
               style={{ animationDelay: "0.45s" }}
             >
-              Websites, web apps and MVPs, reviewed line by line, with the
-              automation wired in so the thing keeps working after launch.
+              Websites, web apps and MVPs for people who want the thing
+              working, not a deck about the thing. The automation goes in
+              too, so it keeps running after you stop watching it.
             </p>
 
             <div

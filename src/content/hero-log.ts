@@ -19,7 +19,7 @@ export type LogLine = {
 export const heroLog: LogLine[] = [
   {
     marker: "$",
-    text: "describe what you need",
+    text: "tell me what it has to do",
     tone: "prompt",
   },
   {
@@ -30,7 +30,7 @@ export const heroLog: LogLine[] = [
   },
   {
     marker: "→",
-    text: "read every line, throw out what is wrong",
+    text: "read it all, keep what survives",
     by: "human",
     tone: "step",
   },
