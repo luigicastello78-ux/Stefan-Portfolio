@@ -517,24 +517,26 @@ FAQPage schema follows it automatically.
 
 ## The mark
 
-`src/components/site/monogram.tsx`. An angular S on a strict grid: three
-horizontal bars, two vertical risers, right angles only, no curves. The
-bottom bar is the brand green.
+`src/components/site/monogram.tsx`. A plain letter S: two half circles of
+equal radius meeting at the centre of the box, drawn as a single stroked
+path with round ends. One path, one colour, nothing else in it.
 
-The green is part of the letter rather than an ornament beside it. A
-detached caret was drawn first, echoing the hero panel, and dropped after
-rendering it at navigation size, where it read as a rendering artefact
-rather than a deliberate mark. Two other variants, a green top bar and a
-plain single-colour S, were rendered and compared at 28 and 120 pixels
-before settling.
+An angular version was drawn first, three horizontal bars and two vertical
+risers on a strict grid with the bottom bar in the brand green. It was
+rejected as too busy. So was a detached caret echoing the hero panel, which
+read as a rendering artefact at navigation size. Four simple candidates
+replaced them, compared at navigation size, large, and on an icon tile: the
+letter in white, the letter in green, a green dot used as a full stop after
+the wordmark, and a green square. The white letter won because it inherits
+`currentColor` and therefore needs no light or dark variant, and because it
+leaves the green where it earns attention, on calls to action.
 
-It is a stroked polyline, not filled shapes, so weight scales with the box
-and the outline stays editable. The letter uses `currentColor` so it works
-on any background; only the bottom bar is fixed.
+It is a stroked path, not filled shapes, so weight scales with the box and
+the outline stays editable.
 
-`src/app/icon.svg` is the same mark on a rounded dark tile, which replaces
-the scaffold's `favicon.ico`. The two have to be edited together: the
-component is not the source of the icon.
+`src/app/icon.svg` is the same geometry on a rounded dark tile, which
+replaces the scaffold's `favicon.ico`. The two have to be edited together:
+the component is not the source of the icon.
 
 This replaces the placeholder drawn from the images the owner sent early on.
 That one was never the real logo and was listed as a launch blocker.

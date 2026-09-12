@@ -3,22 +3,19 @@ import { cn } from "@/lib/utils";
 /**
  * The mark.
  *
- * An angular S built on a strict grid: three horizontal bars joined by two
- * vertical risers, all right angles, no curves. It reads as a letter at a
- * glance and as something constructed on closer look, which is the point.
+ * A plain letter S: two half circles of the same radius, meeting in the
+ * middle, drawn as one stroked path with round ends. There is nothing else
+ * in it. An earlier constructed version with a green bar built into the
+ * letterform was tried and dropped for being busy at navigation size.
  *
- * The bottom bar is the brand green. It is part of the letter rather than
- * an ornament stuck beside it, which is the difference between a mark and a
- * mark with a dot next to it. A detached caret was tried and dropped: at
- * navigation size it read as a rendering artefact.
+ * One path, one colour, inherited from `currentColor`, so the mark works on
+ * any background and needs no light or dark variant. The brand green stays
+ * where it earns attention, on calls to action, rather than in the logo.
  *
- * Drawn as stroked polylines rather than filled shapes, so weight scales
- * with the box and the outline stays editable. The letter inherits
- * `currentColor`, so it works on any background; only the bottom bar is
- * fixed to the brand green.
- *
- * Sized by height, and the stroke stays inside the 40 by 40 box at every
- * size.
+ * Sized by height. The stroke stays inside the 40 by 40 box at every size.
+ * `src/app/icon.svg` carries the same geometry for the favicon and must be
+ * kept in step by hand, since it is a separate file rather than a render of
+ * this component.
  */
 export function Monogram({ className }: { className?: string }) {
   return (
@@ -29,19 +26,10 @@ export function Monogram({ className }: { className?: string }) {
       className={cn("h-7 w-auto", className)}
     >
       <path
-        d="M32 8 H13 V17.5 H27 V31 H8"
+        d="M26.5 13.5 A6.5 6.5 0 1 0 20 20 A6.5 6.5 0 1 1 13.5 26.5"
         stroke="currentColor"
-        strokeWidth="6"
-        strokeLinejoin="miter"
-        strokeLinecap="butt"
-      />
-      {/* Bottom bar, drawn over the corner so the mitre stays clean. */}
-      <path
-        d="M27 26 V31 H8"
-        stroke="hsl(var(--primary))"
-        strokeWidth="6"
-        strokeLinejoin="miter"
-        strokeLinecap="butt"
+        strokeWidth="4"
+        strokeLinecap="round"
       />
     </svg>
   );
